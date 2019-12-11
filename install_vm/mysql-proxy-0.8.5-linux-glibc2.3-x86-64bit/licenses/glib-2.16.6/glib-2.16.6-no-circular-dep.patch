@@ -1,0 +1,10 @@
+--- gio/Makefile.in.ORIG	2008-09-12 20:01:28.000000000 +0200
++++ gio/Makefile.in	2011-02-24 21:38:02.000000000 +0100
+@@ -546,7 +546,6 @@
+ 	gicon.h 		\
+ 	ginputstream.h 		\
+ 	gio.h			\
+-	gioenumtypes.h		\
+ 	gioerror.h 		\
+ 	giomodule.h 		\
+ 	gioscheduler.h 		\

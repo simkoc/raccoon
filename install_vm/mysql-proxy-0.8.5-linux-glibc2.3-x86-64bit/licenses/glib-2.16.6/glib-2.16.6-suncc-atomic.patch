@@ -1,0 +1,114 @@
+--- glib/gatomic.c.ORIG	2009-07-20 08:24:19.316581681 +0200
++++ glib/gatomic.c	2009-07-20 08:24:32.018871143 +0200
+@@ -27,6 +27,10 @@
+ #include <sched.h>
+ #endif
+ 
++#if defined (__SUNPRO_C) && defined (HAVE_ATOMIC_H)
++#include <atomic.h>
++#endif
++
+ #include "glib.h"
+ #include "gthreadprivate.h"
+ #include "galias.h"
+@@ -654,7 +658,46 @@
+ # else /* !G_ATOMIC_ARM */
+ #  define DEFINE_WITH_MUTEXES
+ # endif /* G_ATOMIC_IA64 */
+-#else /* !__GNUC__ */
++#elif defined (__SUNPRO_C) && defined (HAVE_ATOMIC_H)
++# undef DEFINE_WITH_MUTEXES
++gint     g_atomic_int_exchange_and_add         (volatile gint	  *atomic,
++						gint      	   val)
++{
++	gint result;
++	do {
++		result = g_atomic_int_get(atomic);
++		if (val == 0) return result;	/* safe guard against the case we can't detect */
++	} while (atomic_cas_uint(atomic, result, val + result) == result);
++	return result;
++}
++void     g_atomic_int_add                      (volatile gint	  *atomic,
++						gint      	   val)
++{
++	atomic_add_int(atomic, val);
++}
++gboolean g_atomic_int_compare_and_exchange     (volatile gint	  *atomic,
++						gint      	   oldval,
++						gint      	   newval)
++{
++	return oldval == atomic_cas_uint(atomic, oldval, newval);
++}
++gboolean g_atomic_pointer_compare_and_exchange (volatile gpointer *atomic,
++						gpointer  	   oldval,
++						gpointer  	   newval)
++{
++	return oldval == atomic_cas_ptr(atomic, oldval, newval);
++}
++
++#  if defined(G_ATOMIC_SOLARIS_SPARCV9)
++/* this is a full barrier */
++#    define G_ATOMIC_MEMORY_BARRIER					\
++  __asm__ __volatile__ ("membar #LoadLoad | #LoadStore"			\
++                        " | #StoreLoad | #StoreStore" : : : "memory")
++#  else /* G_ATOMIC_SOLARIS_SPARCV9 */
++#    define G_ATOMIC_MEMORY_BARRIER \
++	__asm__ __volatile__ ("lock; addl $0,0(%%esp)" ::: "m (mem)")
++#  endif /*G_ATOMIC_SOLARIS_SPARCV9 */
++#else /* !__GNUC__ && ( !__SUNPRO_C && HAVE_ATOMIC_H ) */
+ # ifdef G_PLATFORM_WIN32
+ #  define DEFINE_WITH_WIN32_INTERLOCKED
+ # else
+
+*** configure.ORIG	Wed Aug  5 23:32:15 2009
+--- configure	Wed Aug  5 23:32:06 2009
+***************
+*** 42940,42947 ****
+--- 42940,42986 ----
+        glib_memory_barrier_needed=yes
+        ;;
+    esac
++ else
++   case $host_os in
++     solaris*)
++       { $as_echo "$as_me:${as_lineno-$LINENO}: result: solaris atomic.h" >&5
++ $as_echo "solaris atomic.h" >&6; }
++       for ac_header in atomic.h
++ do :
++   ac_fn_c_check_header_mongrel "$LINENO" "atomic.h" "ac_cv_header_atomic_h" "$ac_includes_default"
++ if test "x$ac_cv_header_atomic_h" = x""yes; then :
++   cat >>confdefs.h <<_ACEOF
++ #define HAVE_ATOMIC_H 1
++ _ACEOF
++ 
+  fi
+  
++ done
++ 
++ 
++ cat >>confdefs.h <<_ACEOF
++ #define G_ATOMIC_SOLARIS 1
++ _ACEOF
++ 
++       case $host_cpu in
++         sparc*)
++ 
++ cat >>confdefs.h <<_ACEOF
++ #define G_ATOMIC_SOLARIS_SPARCV9 1
++ _ACEOF
++ 
++           ;;
++         x86_64)
++ 
++ cat >>confdefs.h <<_ACEOF
++ #define G_ATOMIC_SOLARIS_X86_64 1
++ _ACEOF
++ 
++       esac
++       ;;
++   esac
++ fi
++ 
+  
+  glib_poll_includes="
+  #include <sys/types.h>

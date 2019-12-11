@@ -1,0 +1,22 @@
+Add FreeBSD support to configure script
+
+--- configure.ORIG	2011-10-27 20:27:45.177269000 +0200
++++ configure	2011-10-27 20:28:40.644580000 +0200
+@@ -18980,6 +18980,7 @@
+ case "$host" in
+   *-mingw*)  use_os=win32  ;;
+   *-darwin*) use_os=macosx ;;
++  *-freebsd*) use_os=freebsd ;;
+   *)         use_os=posix  ;;
+ esac
+ 
+@@ -18996,6 +18997,9 @@
+   POSIX_DEFS="#define LUA_USE_POSIX"
+   LUA_DL_DEFS="#define LUA_DL_DLOPEN"
+   LUA_LIBS="$LUA_LIBS -ldl"
++elif test "x$use_os" = "xfreebsd"; then
++  POSIX_DEFS="#define LUA_USE_POSIX"
++  LUA_DL_DEFS="#define LUA_DL_DLOPEN"
+ fi
+ 
+ 

@@ -1,0 +1,6 @@
+hashQuery.py
+setup.py
+hashQuery.egg-info/PKG-INFO
+hashQuery.egg-info/SOURCES.txt
+hashQuery.egg-info/dependency_links.txt
+hashQuery.egg-info/top_level.txt

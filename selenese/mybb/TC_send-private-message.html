@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://192.168.56.102/" />
+<title>TC_send_private_message</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">TC_send_private_message</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/index.php</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Private Messages</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Compose Message</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=s2id_autogen1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=to</td>
+	<td>user1</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>name=subject</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=subject</td>
+	<td>testvalue</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//img[@alt='Heart'])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=submit</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

@@ -1,0 +1,2282 @@
+select `oxid` from oxuser where oxuser.oxactive = 1 and oxuser.oxpassword = BINARY MD5( CONCAT( 'wrongpassword', UNHEX( oxuser.oxpasssalt ) ) ) and oxuser.oxusername = 'user@example.com'
+--
+select `oxid` from oxuser where oxuser.oxactive = 1 and oxuser.oxpassword = BINARY MD5( CONCAT( 'wrongpassword', UNHEX( oxuser.oxpasssalt ) ) ) and oxuser.oxusername = 'user@example.com'
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT tr.tax_class_id, tr.rate AS rate, tr.rate_prefix AS rate_prefix, tr.threshold_condition AS threshold_condition, tr.threshold AS threshold, tr.tax_exempt_groups AS tax_exempt_groups, COALESCE( td1.title,td2.title) as title, COALESCE( NULLIF(trd1.description, ''), NULLIF(td1.description, ''), NULLIF(trd2.description, ''), NULLIF(td2.description, ''), COALESCE( td1.title,td2.title) ) as description, tr.priority FROM ac_tax_rates tr LEFT JOIN ac_tax_rate_descriptions trd1 ON (tr.tax_rate_id = trd1.tax_rate_id AND trd1.language_id = '1') LEFT JOIN ac_tax_rate_descriptions trd2 ON (tr.tax_rate_id = trd2.tax_rate_id AND trd2.language_id = '1') LEFT JOIN ac_tax_classes tc ON tc.tax_class_id = tr.tax_class_id LEFT JOIN ac_tax_class_descriptions td1 ON (tc.tax_class_id = td1.tax_class_id AND td1.language_id = '1') LEFT JOIN ac_tax_class_descriptions td2 ON (tc.tax_class_id = td2.tax_class_id AND td2.language_id = '1') WHERE (tr.zone_id = '0' OR tr.zone_id = '3613') AND tr.location_id in (SELECT z2l.location_id FROM ac_zones_to_locations z2l, ac_locations l WHERE z2l.location_id = l.location_id and z2l.zone_id = '3613') ORDER BY tr.priority ASC
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_order_data od WHERE `type_id` in ( SELECT DISTINCT type_id FROM ac_order_data_types WHERE `name`='sms' ) AND order_id = '14'
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT tr.tax_class_id, tr.rate AS rate, tr.rate_prefix AS rate_prefix, tr.threshold_condition AS threshold_condition, tr.threshold AS threshold, tr.tax_exempt_groups AS tax_exempt_groups, COALESCE( td1.title,td2.title) as title, COALESCE( NULLIF(trd1.description, ''), NULLIF(td1.description, ''), NULLIF(trd2.description, ''), NULLIF(td2.description, ''), COALESCE( td1.title,td2.title) ) as description, tr.priority FROM ac_tax_rates tr LEFT JOIN ac_tax_rate_descriptions trd1 ON (tr.tax_rate_id = trd1.tax_rate_id AND trd1.language_id = '1') LEFT JOIN ac_tax_rate_descriptions trd2 ON (tr.tax_rate_id = trd2.tax_rate_id AND trd2.language_id = '1') LEFT JOIN ac_tax_classes tc ON tc.tax_class_id = tr.tax_class_id LEFT JOIN ac_tax_class_descriptions td1 ON (tc.tax_class_id = td1.tax_class_id AND td1.language_id = '1') LEFT JOIN ac_tax_class_descriptions td2 ON (tc.tax_class_id = td2.tax_class_id AND td2.language_id = '1') WHERE (tr.zone_id = '0' OR tr.zone_id = '3613') AND tr.location_id in (SELECT z2l.location_id FROM ac_zones_to_locations z2l, ac_locations l WHERE z2l.location_id = l.location_id and z2l.zone_id = '3613') ORDER BY tr.priority ASC
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_order_data od WHERE `type_id` in ( SELECT DISTINCT type_id FROM ac_order_data_types WHERE `name`='sms' ) AND order_id = '14'
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT `oxseourl` FROM `oxseo` WHERE `oxstdurl` = 'index.php 1lang=1' AND `oxlang` = 1 AND `oxshopid` = ? LIMIT 1
+--
+select `oxv_oxnews_en`.`oxid`, `oxv_oxnews_en`.`oxshopid`, `oxv_oxnews_en`.`oxactive`, `oxv_oxnews_en`.`oxactivefrom`, `oxv_oxnews_en`.`oxactiveto`, `oxv_oxnews_en`.`oxdate`, `oxv_oxnews_en`.`oxshortdesc`, `oxv_oxnews_en`.`oxlongdesc`, `oxv_oxnews_en`.`oxtimestamp` from oxv_oxnews_en left join oxobject2group on oxobject2group.oxobjectid=oxv_oxnews_en.oxid where oxobject2group.oxgroupsid in ( select oxgroupsid from oxobject2group where oxobjectid='2120d65d607482aa20ee3c477b1d243a' ) or ( oxobject2group.oxgroupsid is null ) and ( oxv_oxnews_en.oxactive = 1 or ( oxv_oxnews_en.oxactivefrom < '2019-03-24 14:28:00' and oxv_oxnews_en.oxactiveto > '2019-03-24 14:28:00' ) ) and oxv_oxnews_en.oxshortdesc <> '' group by oxv_oxnews_en.oxid order by oxv_oxnews_en.oxdate desc LIMIT 1 OFFSET 0
+--
+SELECT `oxseourl` FROM `oxseo` WHERE `oxstdurl` = 'index.php 1cl=alist&amp;cnid=0f41a4463b227c437f6e6bf57b1697c4&amp;anid=05848170643ab0deb9914566391c0c63&amp;lang=1' AND `oxlang` = 1 AND `oxshopid` = ? LIMIT 1
+--
+SELECT `oxseourl` FROM `oxseo` WHERE `oxstdurl` = 'index.php 1lang=1&amp;cl=basket' AND `oxlang` = 1 AND `oxshopid` = ? LIMIT 1
+--
+SELECT `oxseourl` FROM `oxseo` WHERE `oxstdurl` = 'index.php 1lang=1&amp;cl=payment' AND `oxlang` = 1 AND `oxshopid` = ? LIMIT 1
+--
+SELECT `oxseourl` FROM `oxseo` WHERE `oxstdurl` = 'index.php 1cl=order&amp;lang=1' AND `oxlang` = 1 AND `oxshopid` = ? LIMIT 1
+--
+SELECT `oxseourl` FROM `oxseo` WHERE `oxstdurl` = 'index.php 1cl=thankyou&amp;mailerror=1&amp;lang=1' AND `oxlang` = 1 AND `oxshopid` = ? LIMIT 1
+--
+SELECT `oxseourl` FROM `oxseo` WHERE `oxstdurl` = 'index.php 1lang=1' AND `oxlang` = 1 AND `oxshopid` = ? LIMIT 1
+--
+select `oxv_oxnews_en`.`oxid`, `oxv_oxnews_en`.`oxshopid`, `oxv_oxnews_en`.`oxactive`, `oxv_oxnews_en`.`oxactivefrom`, `oxv_oxnews_en`.`oxactiveto`, `oxv_oxnews_en`.`oxdate`, `oxv_oxnews_en`.`oxshortdesc`, `oxv_oxnews_en`.`oxlongdesc`, `oxv_oxnews_en`.`oxtimestamp` from oxv_oxnews_en left join oxobject2group on oxobject2group.oxobjectid=oxv_oxnews_en.oxid where oxobject2group.oxgroupsid in ( select oxgroupsid from oxobject2group where oxobjectid='2120d65d607482aa20ee3c477b1d243a' ) or ( oxobject2group.oxgroupsid is null ) and ( oxv_oxnews_en.oxactive = 1 or ( oxv_oxnews_en.oxactivefrom < '2019-03-24 14:28:00' and oxv_oxnews_en.oxactiveto > '2019-03-24 14:28:00' ) ) and oxv_oxnews_en.oxshortdesc <> '' group by oxv_oxnews_en.oxid order by oxv_oxnews_en.oxdate desc LIMIT 1 OFFSET 0
+--
+SELECT `oxseourl` FROM `oxseo` WHERE `oxstdurl` = 'index.php 1cl=alist&amp;cnid=0f41a4463b227c437f6e6bf57b1697c4&amp;anid=05848170643ab0deb9914566391c0c63&amp;lang=1' AND `oxlang` = 1 AND `oxshopid` = ? LIMIT 1
+--
+SELECT `oxseourl` FROM `oxseo` WHERE `oxstdurl` = 'index.php 1lang=1&amp;cl=basket' AND `oxlang` = 1 AND `oxshopid` = ? LIMIT 1
+--
+SELECT `oxseourl` FROM `oxseo` WHERE `oxstdurl` = 'index.php 1lang=1&amp;cl=payment' AND `oxlang` = 1 AND `oxshopid` = ? LIMIT 1
+--
+SELECT `oxseourl` FROM `oxseo` WHERE `oxstdurl` = 'index.php 1cl=order&amp;lang=1' AND `oxlang` = 1 AND `oxshopid` = ? LIMIT 1
+--
+SELECT `oxseourl` FROM `oxseo` WHERE `oxstdurl` = 'index.php 1cl=thankyou&amp;mailerror=1&amp;lang=1' AND `oxlang` = 1 AND `oxshopid` = ? LIMIT 1
+--
+SELECT `oxseourl` FROM `oxseo` WHERE `oxstdurl` = 'index.php 1lang=1' AND `oxlang` = 1 AND `oxshopid` = ? LIMIT 1
+--
+select `oxv_oxnews_en`.`oxid`, `oxv_oxnews_en`.`oxshopid`, `oxv_oxnews_en`.`oxactive`, `oxv_oxnews_en`.`oxactivefrom`, `oxv_oxnews_en`.`oxactiveto`, `oxv_oxnews_en`.`oxdate`, `oxv_oxnews_en`.`oxshortdesc`, `oxv_oxnews_en`.`oxlongdesc`, `oxv_oxnews_en`.`oxtimestamp` from oxv_oxnews_en left join oxobject2group on oxobject2group.oxobjectid=oxv_oxnews_en.oxid where oxobject2group.oxgroupsid in ( select oxgroupsid from oxobject2group where oxobjectid='2120d65d607482aa20ee3c477b1d243a' ) or ( oxobject2group.oxgroupsid is null ) and ( oxv_oxnews_en.oxactive = 1 or ( oxv_oxnews_en.oxactivefrom < '2019-03-24 14:28:00' and oxv_oxnews_en.oxactiveto > '2019-03-24 14:28:00' ) ) and oxv_oxnews_en.oxshortdesc <> '' group by oxv_oxnews_en.oxid order by oxv_oxnews_en.oxdate desc LIMIT 1 OFFSET 0
+--
+SELECT `oxseourl` FROM `oxseo` WHERE `oxstdurl` = 'index.php 1cl=alist&amp;cnid=0f41a4463b227c437f6e6bf57b1697c4&amp;anid=05848170643ab0deb9914566391c0c63&amp;lang=1' AND `oxlang` = 1 AND `oxshopid` = ? LIMIT 1
+--
+SELECT `oxseourl` FROM `oxseo` WHERE `oxstdurl` = 'index.php 1lang=1&amp;cl=basket' AND `oxlang` = 1 AND `oxshopid` = ? LIMIT 1
+--
+SELECT `oxseourl` FROM `oxseo` WHERE `oxstdurl` = 'index.php 1lang=1&amp;cl=payment' AND `oxlang` = 1 AND `oxshopid` = ? LIMIT 1
+--
+SELECT `oxseourl` FROM `oxseo` WHERE `oxstdurl` = 'index.php 1cl=order&amp;lang=1' AND `oxlang` = 1 AND `oxshopid` = ? LIMIT 1
+--
+SELECT `oxseourl` FROM `oxseo` WHERE `oxstdurl` = 'index.php 1cl=thankyou&amp;mailerror=1&amp;lang=1' AND `oxlang` = 1 AND `oxshopid` = ? LIMIT 1
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '1' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_left' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'column_right' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_top' ORDER BY sort_order
+--
+SELECT * FROM oc_layout_module WHERE layout_id = '6' AND position = 'content_bottom' ORDER BY sort_order
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT tr.tax_class_id, tr.rate AS rate, tr.rate_prefix AS rate_prefix, tr.threshold_condition AS threshold_condition, tr.threshold AS threshold, tr.tax_exempt_groups AS tax_exempt_groups, COALESCE( td1.title,td2.title) as title, COALESCE( NULLIF(trd1.description, ''), NULLIF(td1.description, ''), NULLIF(trd2.description, ''), NULLIF(td2.description, ''), COALESCE( td1.title,td2.title) ) as description, tr.priority FROM ac_tax_rates tr LEFT JOIN ac_tax_rate_descriptions trd1 ON (tr.tax_rate_id = trd1.tax_rate_id AND trd1.language_id = '1') LEFT JOIN ac_tax_rate_descriptions trd2 ON (tr.tax_rate_id = trd2.tax_rate_id AND trd2.language_id = '1') LEFT JOIN ac_tax_classes tc ON tc.tax_class_id = tr.tax_class_id LEFT JOIN ac_tax_class_descriptions td1 ON (tc.tax_class_id = td1.tax_class_id AND td1.language_id = '1') LEFT JOIN ac_tax_class_descriptions td2 ON (tc.tax_class_id = td2.tax_class_id AND td2.language_id = '1') WHERE (tr.zone_id = '0' OR tr.zone_id = '3613') AND tr.location_id in (SELECT z2l.location_id FROM ac_zones_to_locations z2l, ac_locations l WHERE z2l.location_id = l.location_id and z2l.zone_id = '3613') ORDER BY tr.priority ASC
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_order_data od WHERE `type_id` in ( SELECT DISTINCT type_id FROM ac_order_data_types WHERE `name`='sms' ) AND order_id = '14'
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT tr.tax_class_id, tr.rate AS rate, tr.rate_prefix AS rate_prefix, tr.threshold_condition AS threshold_condition, tr.threshold AS threshold, tr.tax_exempt_groups AS tax_exempt_groups, COALESCE( td1.title,td2.title) as title, COALESCE( NULLIF(trd1.description, ''), NULLIF(td1.description, ''), NULLIF(trd2.description, ''), NULLIF(td2.description, ''), COALESCE( td1.title,td2.title) ) as description, tr.priority FROM ac_tax_rates tr LEFT JOIN ac_tax_rate_descriptions trd1 ON (tr.tax_rate_id = trd1.tax_rate_id AND trd1.language_id = '1') LEFT JOIN ac_tax_rate_descriptions trd2 ON (tr.tax_rate_id = trd2.tax_rate_id AND trd2.language_id = '1') LEFT JOIN ac_tax_classes tc ON tc.tax_class_id = tr.tax_class_id LEFT JOIN ac_tax_class_descriptions td1 ON (tc.tax_class_id = td1.tax_class_id AND td1.language_id = '1') LEFT JOIN ac_tax_class_descriptions td2 ON (tc.tax_class_id = td2.tax_class_id AND td2.language_id = '1') WHERE (tr.zone_id = '0' OR tr.zone_id = '3613') AND tr.location_id in (SELECT z2l.location_id FROM ac_zones_to_locations z2l, ac_locations l WHERE z2l.location_id = l.location_id and z2l.zone_id = '3613') ORDER BY tr.priority ASC
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_order_data od WHERE `type_id` in ( SELECT DISTINCT type_id FROM ac_order_data_types WHERE `name`='sms' ) AND order_id = '14'
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT tr.tax_class_id, tr.rate AS rate, tr.rate_prefix AS rate_prefix, tr.threshold_condition AS threshold_condition, tr.threshold AS threshold, tr.tax_exempt_groups AS tax_exempt_groups, COALESCE( td1.title,td2.title) as title, COALESCE( NULLIF(trd1.description, ''), NULLIF(td1.description, ''), NULLIF(trd2.description, ''), NULLIF(td2.description, ''), COALESCE( td1.title,td2.title) ) as description, tr.priority FROM ac_tax_rates tr LEFT JOIN ac_tax_rate_descriptions trd1 ON (tr.tax_rate_id = trd1.tax_rate_id AND trd1.language_id = '1') LEFT JOIN ac_tax_rate_descriptions trd2 ON (tr.tax_rate_id = trd2.tax_rate_id AND trd2.language_id = '1') LEFT JOIN ac_tax_classes tc ON tc.tax_class_id = tr.tax_class_id LEFT JOIN ac_tax_class_descriptions td1 ON (tc.tax_class_id = td1.tax_class_id AND td1.language_id = '1') LEFT JOIN ac_tax_class_descriptions td2 ON (tc.tax_class_id = td2.tax_class_id AND td2.language_id = '1') WHERE (tr.zone_id = '0' OR tr.zone_id = '3613') AND tr.location_id in (SELECT z2l.location_id FROM ac_zones_to_locations z2l, ac_locations l WHERE z2l.location_id = l.location_id and z2l.zone_id = '3613') ORDER BY tr.priority ASC
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_order_data od WHERE `type_id` in ( SELECT DISTINCT type_id FROM ac_order_data_types WHERE `name`='sms' ) AND order_id = '14'
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--
+SELECT * FROM ac_datasets WHERE dataset_name = 'neowize' AND dataset_key = 'neowize_settings';
+--
+DELETE FROM `ac_online_customers` WHERE `date_added`< (NOW() - INTERVAL 1 HOUR)
+--

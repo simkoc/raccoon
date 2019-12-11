@@ -1,0 +1,16 @@
+Don't link with static library when building shared library, on
+Solaris 64-bit this will give a link error, non PIC symbols being
+used. Setting LDFLAGS in configure looks like a bug anyway, there is
+a TEST_LDFLAGS that is used when linking applications that contains
+"-L. libz.a".
+
+--- configure	2010-04-20 06:15:19.000000000 +0200
++++ configure	2011-11-02 15:00:53.031075400 +0100
+@@ -19,7 +19,6 @@
+ fi
+ 
+ STATICLIB=libz.a
+-LDFLAGS="${LDFLAGS} -L. ${STATICLIB}"
+ VER=`sed -n -e '/VERSION "/s/.*"\(.*\)".*/\1/p' < zlib.h`
+ VER3=`sed -n -e '/VERSION "/s/.*"\([0-9]*\\.[0-9]*\\.[0-9]*\).*/\1/p' < zlib.h`
+ VER2=`sed -n -e '/VERSION "/s/.*"\([0-9]*\\.[0-9]*\)\\..*/\1/p' < zlib.h`

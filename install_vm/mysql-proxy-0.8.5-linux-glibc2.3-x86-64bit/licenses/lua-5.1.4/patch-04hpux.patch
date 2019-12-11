@@ -1,0 +1,41 @@
+Added configure support for HP-UX
+
+--- configure.ORIG	2011-10-27 20:28:40.644580000 +0200
++++ configure	2011-10-27 20:59:51.180485700 +0200
+@@ -18981,6 +18981,7 @@
+   *-mingw*)  use_os=win32  ;;
+   *-darwin*) use_os=macosx ;;
+   *-freebsd*) use_os=freebsd ;;
++  *-hpux*)   use_os=hpux ;;
+   *)         use_os=posix  ;;
+ esac
+ 
+@@ -18997,6 +18998,10 @@
+   POSIX_DEFS="#define LUA_USE_POSIX"
+   LUA_DL_DEFS="#define LUA_DL_DLOPEN"
+   LUA_LIBS="$LUA_LIBS -ldl"
++elif test "x$use_os" = "xhpux"; then
++  POSIX_DEFS="#define LUA_USE_POSIX"
++  LUA_DL_DEFS="#define LUA_DL_DLOPEN"
++  LUA_LIBS="$LUA_LIBS -ldld"
+ elif test "x$use_os" = "xfreebsd"; then
+   POSIX_DEFS="#define LUA_USE_POSIX"
+   LUA_DL_DEFS="#define LUA_DL_DLOPEN"
+
+--- src/luaconf.h.template.in.ORIG	2011-10-27 20:30:10.080981000 +0200
++++ src/luaconf.h.template.in	2011-10-27 21:04:19.878302700 +0200
+@@ -114,9 +114,14 @@
+ #define LUA_PATH_DEFAULT  \
+ 		"./?.lua;"  LUA_LDIR"?.lua;"  LUA_LDIR"?/init.lua;" \
+ 		            LUA_CDIR"?.lua;"  LUA_CDIR"?/init.lua"
++#ifdef _hpux
++#define LUA_CPATH_DEFAULT \
++	"./?.sl;"  LUA_CDIR"?.sl;" LUA_CDIR"loadall.sl"
++#else
+ #define LUA_CPATH_DEFAULT \
+ 	"./?.so;"  LUA_CDIR"?.so;" LUA_CDIR"loadall.so"
+ #endif
++#endif
+ 
+ 
+ /*
