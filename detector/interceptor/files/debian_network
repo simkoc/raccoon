@@ -1,0 +1,10 @@
+auto lo
+iface lo inet loopback
+
+auto enp0s3
+iface enp0s3 inet static
+address IPADDRESS
+netmask 255.255.255.0
+network 192.168.56.0
+broadcast 192.168.56.255
+gateway 192.168.56.1

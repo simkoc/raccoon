@@ -1,0 +1,12 @@
+prefix=/pb2/build/sb_0-12957140-1408437584.11/mysql-proxy-0.8.5-linux-glibc2.3-x86-64bit
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: mysql-chassis
+Version: 0.8.5
+Description: the Chassis of the MySQL Proxy
+URL: http://forge.mysql.com/wiki/MySQL_Proxy
+Requires: glib-2.0 >= 2.16, gthread-2.0 >= 2.16
+Libs: -L${libdir} -lmysql-chassis -lmysql-chassis-glibext
+Cflags: -I${includedir} 

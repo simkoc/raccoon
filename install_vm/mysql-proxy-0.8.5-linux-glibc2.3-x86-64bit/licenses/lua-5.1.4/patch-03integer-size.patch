@@ -1,0 +1,27 @@
+Change so that LUA integers are 64 bits
+
+--- src/luaconf.h.template.in.ORIG	2011-10-27 20:27:45.195973000 +0200
++++ src/luaconf.h.template.in	2011-10-27 20:30:10.080981000 +0200
+@@ -10,6 +10,9 @@
+ 
+ #include <limits.h>
+ #include <stddef.h>
++#ifndef _WIN32
++#include <stdint.h>
++#endif
+ 
+ /*
+ ** =================
+@@ -149,7 +154,11 @@
+ ** CHANGE that if ptrdiff_t is not adequate on your machine. (On most
+ ** machines, ptrdiff_t gives a good choice between int or long.)
+ */
+-#define LUA_INTEGER	ptrdiff_t
++#ifdef LUA_WIN
++#define LUA_INTEGER	__int64
++#else
++#define LUA_INTEGER	int64_t
++#endif
+ 
+ 
+ /*

@@ -1,0 +1,1 @@
+UPDATE mybb_users SET loginattempts=loginattempts+1 WHERE uid= '1 ' LIMIT 1

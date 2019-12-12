@@ -1,0 +1,17 @@
+[Basis]
+# choose one of the following actions: data_gathering, interleaving, full, single, reeval, results, raw_queries, analysis 
+action = data_gathering
+
+[Parameters]
+# postgres host
+host = localhost
+# postgres user
+user = trueschottsman
+# postgres user password
+pwd = woulddothat
+# postgres database
+database = secsac
+# do not store results in database
+simulate = false
+# relax the match checking to simply only look for the query itself
+relaxed-check = false

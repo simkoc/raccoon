@@ -1,0 +1,2243 @@
+--- CMakeLists.txt	1970-01-01 01:00:00.000000000 +0100
++++ CMakeLists.txt	2012-10-24 15:35:06.242601000 +0200
+@@ -0,0 +1,623 @@
++PROJECT(glib C)
++
++cmake_minimum_required(VERSION 2.6)
++
++INCLUDE(TestBigEndian)
++INCLUDE(CheckTypeSize)
++INCLUDE(CheckCSourceCompiles)
++INCLUDE(CheckIncludeFiles)
++INCLUDE(CheckFunctionExists)
++INCLUDE(FindPkgConfig)
++
++##############################################################################
++# Constants
++##############################################################################
++
++SET(GLIB_MAJOR_VERSION 2)
++SET(GLIB_MINOR_VERSION 16)
++SET(GLIB_MICRO_VERSION 6)
++
++SET(VERSION "${GLIB_MAJOR_VERSION}.${GLIB_MINOR_VERSION}.${GLIB_MICRO_VERSION}")
++
++##############################################################################
++# Handle dependencies on other libraries
++##############################################################################
++
++SET(PCRE_INCLUDE_DIRS CACHE PATH "libpcre include dir")
++SET(PCRE_LIBRARY_DIRS CACHE PATH "libpcre library dir")
++
++SET(PCRE_SOURCES)
++SET(PCRE_LIB)
++
++IF(PCRE_LIBRARY_DIRS)
++
++	MESSAGE(STATUS "... using ${PCRE_LIBRARY_DIRS}")
++	FIND_LIBRARY(PCRE_LIBRARIES 
++		NAMES pcre 
++		PATHS ${PCRE_LIBRARY_DIRS} 
++		NO_DEFAULT_PATH
++	)
++	SET(PCRE_LIB pcre)
++	LINK_DIRECTORIES(${PCRE_LIBRARY_DIRS})
++
++ELSEIF(USE_SYSTEM_PCRE)
++
++	PKG_CHECK_MODULES(PCRE REQUIRED libpcre)
++	SET(PCRE_LIB pcre)
++	LINK_DIRECTORIES(${PCRE_LIBRARY_DIRS})
++
++ELSE(PCRE_LIBRARY_DIRS)
++
++	# Use bundled PCRE
++
++	ADD_DEFINITIONS(
++	        -DPCRE_STATIC
++	        -DHAVE_LONG_LONG_FORMAT
++	        -DSUPPORT_UCP
++	        -DSUPPORT_UTF8
++	        -DNEWLINE=-1
++	        -DMATCH_LIMIT=10000000
++	        -DMATCH_LIMIT_RECURSION=10000000
++	        -DMAX_NAME_SIZE=32
++	        -DMAX_NAME_COUNT=10000
++	        -DMAX_DUPLENGTH=30000
++	        -DLINK_SIZE=2
++	        -DPOSIX_MALLOC_THRESHOLD=10
++	)
++
++	SET(PCRE_SOURCES
++		glib/pcre/pcre_compile.c
++		glib/pcre/pcre_chartables.c
++		glib/pcre/pcre_config.c
++		glib/pcre/pcre_dfa_exec.c
++		glib/pcre/pcre_exec.c
++		glib/pcre/pcre_fullinfo.c
++		glib/pcre/pcre_get.c
++		glib/pcre/pcre_globals.c
++		glib/pcre/pcre_info.c
++		glib/pcre/pcre_maketables.c
++		glib/pcre/pcre_newline.c
++		glib/pcre/pcre_ord2utf8.c
++		glib/pcre/pcre_refcount.c
++		glib/pcre/pcre_study.c
++		glib/pcre/pcre_tables.c
++		glib/pcre/pcre_try_flipped.c
++		glib/pcre/pcre_ucp_searchfuncs.c
++		glib/pcre/pcre_valid_utf8.c
++		glib/pcre/pcre_version.c
++		glib/pcre/pcre_xclass.c
++		glib/pcre/pcre.h
++		glib/pcre/pcre_internal.h
++		glib/pcre/ucp.h
++		glib/pcre/ucpinternal.h
++	)
++
++ENDIF(PCRE_LIBRARY_DIRS)
++
++##############################################################################
++# Check endian, types etc
++##############################################################################
++
++TEST_BIG_ENDIAN(ENDIAN)
++
++IF(ENDIAN EQUAL 0) 
++	SET(g_byte_order "G_LITTLE_ENDIAN")
++	SET(g_bs_native "LE")
++	SET(g_bs_alien "BE")
++ELSE(ENDIAN EQUAL 0) 
++	SET(g_byte_order "G_BIG_ENDIAN")
++	SET(g_bs_native "BE")
++	SET(g_bs_alien "LE")
++ENDIF(ENDIAN EQUAL 0) 
++
++CHECK_TYPE_SIZE("char" SIZEOF_CHAR)
++CHECK_TYPE_SIZE("short" SIZEOF_SHORT)
++CHECK_TYPE_SIZE("int" SIZEOF_INT)
++CHECK_TYPE_SIZE("long" SIZEOF_LONG)
++CHECK_TYPE_SIZE("long long" SIZEOF_LONGLONG)
++
++MESSAGE(STATUS "sizeof(char) = ${SIZEOF_CHAR}")
++MESSAGE(STATUS "sizeof(short) = ${SIZEOF_SHORT}")
++MESSAGE(STATUS "sizeof(int) = ${SIZEOF_INT}")
++MESSAGE(STATUS "sizeof(long) = ${SIZEOF_LONG}")
++MESSAGE(STATUS "sizeof(long long) = ${SIZEOF_LONGLONG}")
++
++IF(SIZEOF_CHAR EQUAL 1)
++	SET(gint8 "char")
++ENDIF(SIZEOF_CHAR EQUAL 1)
++
++IF(SIZEOF_SHORT EQUAL 2)
++	SET(gint16 "short")
++ENDIF(SIZEOF_SHORT EQUAL 2)
++
++IF(SIZEOF_INT EQUAL 4)
++	SET(gint32 "int")
++ENDIF(SIZEOF_INT EQUAL 4)
++
++IF(SIZEOF_LONGLONG EQUAL 8)
++	SET(gint64 "long long")
++ENDIF(SIZEOF_LONGLONG EQUAL 8)
++	
++SET(gsize "size_t")
++SET(gssize "int")
++SET(goffset "off_t")
++SET(gpid "pid_t")
++SET(G_MAXLONG  LONG_MAX)
++SET(G_MAXULONG ULONG_MAX)
++SET(G_MAXUINT  UINT_MAX)
++SET(G_MAXINT   INT_MAX)
++
++IF(SIZEOF_VOID_P EQUAL SIZEOF_INT)
++	SET(glib_gpi_cast)
++	SET(glib_gpui_cast)
++ELSE(SIZEOF_VOID_P EQUAL SIZEOF_INT)
++	SET(glib_gpi_cast "(glong)")
++	SET(glib_gpui_cast "(gulong)")
++ENDIF(SIZEOF_VOID_P EQUAL SIZEOF_INT)
++
++SET(G_GSIZE_FORMAT "u")
++SET(G_GUINT64_FORMAT "llu")
++
++IF(SIZEOF_INT EQUAL 4)
++	SET(gintbits 32)
++ENDIF(SIZEOF_INT EQUAL 4)
++
++IF(SIZEOF_LONG EQUAL 4)
++	SET(glongbits 32)
++ENDIF(SIZEOF_LONG EQUAL 4)
++
++IF(SIZEOF_LONGLONG EQUAL 8)
++	SET(gint64_constant "(G_GNUC_EXTENSION (val##LL))")
++	SET(guint64_constant "(G_GNUC_EXTENSION (val##ULL))")
++ENDIF(SIZEOF_LONGLONG EQUAL 8)
++
++##############################################################################
++# Configuration
++##############################################################################
++
++## poll()
++
++SET(GLIB_SYSDEF_POLLIN "POLLIN")
++SET(GLIB_SYSDEF_POLLOUT "POLLOUT")
++SET(GLIB_SYSDEF_POLLERR "POLLERR")
++SET(GLIB_SYSDEF_POLLHUP "POLLHUP")
++SET(GLIB_SYSDEF_POLLPRI "POLLPRI")
++SET(GLIB_SYSDEF_POLLNVAL "POLLNVAL")
++
++
++## threading
++
++SET(g_threads_impl_def "POSIX")
++SET(G_THREADS_ENABLED 1)
++
++SET(CMAKE_EXTRA_INCLUDE_FILES pthread.h)
++CHECK_TYPE_SIZE("pthread_t" g_system_thread_sizeof)
++SET(CMAKE_EXTRA_INCLUDE_FILES)
++
++## gmodule
++
++SET(G_MODULE_IMPL G_MODULE_IMPL_WIN32)
++SET(G_MODULE_SUFFIX \".so\")
++
++## others
++
++CHECK_C_SOURCE_COMPILES("
++	#include <stdarg.h>
++	#include <stdlib.h>
++	void f (int i, ...) {
++		va_list args1, args2;
++		va_start (args1, i);
++		va_copy (args2, args1);
++		if (va_arg (args2, int) != 42 || va_arg (args1, int) != 42)
++			exit (1);
++		va_end (args1); va_end (args2);
++        }
++        int main() {
++        	f(0, 42);
++		return 0;
++	}
++" HAVE_VA_COPY)
++
++CHECK_C_SOURCE_COMPILES("
++	#include <stdarg.h>
++	#include <stdlib.h>
++	void f (int i, ...) {
++		va_list args1, args2;
++		va_start (args1, i);
++		__va_copy (args2, args1);
++		if (va_arg (args2, int) != 42 || va_arg (args1, int) != 42)
++			exit (1);
++		va_end (args1); va_end (args2);
++        }
++        int main() {
++        	f(0, 42);
++		return 0;
++	}
++" HAVE___VA_COPY)
++
++IF(HAVE_VA_COPY)
++	SET(G_VA_COPY va_copy)
++ELSE(HAVE_VA_COPY)
++	IF(HAVE___VA_COPY)
++		SET(G_VA_COPY __va_copy)
++	ENDIF(HAVE___VA_COPY)
++ENDIF(HAVE_VA_COPY)
++
++CHECK_INCLUDE_FILES(sys/time.h   HAVE_SYS_TIME_H)
++CHECK_INCLUDE_FILES(sys/tree.h   HAVE_SYS_TREE_H)
++CHECK_INCLUDE_FILES(fcntl.h      HAVE_FCNTL_H)
++CHECK_INCLUDE_FILES(stdarg.h     HAVE_STDARG_H)
++CHECK_INCLUDE_FILES(inttypes.h   HAVE_INTTYPES_H)
++CHECK_INCLUDE_FILES(stdint.h     HAVE_STDINT_H)
++CHECK_INCLUDE_FILES(poll.h       HAVE_POLL_H)
++CHECK_INCLUDE_FILES(signal.h     HAVE_SIGNAL_H)
++CHECK_INCLUDE_FILES(unistd.h     HAVE_UNISTD_H)
++CHECK_INCLUDE_FILES(sys/devpoll.h HAVE_SYS_DEVPOLL_H)
++CHECK_INCLUDE_FILES(port.h       HAVE_PORT_H)
++CHECK_INCLUDE_FILES(kqueue.h     HAVE_KQUEUE_H)
++CHECK_INCLUDE_FILES(malloc.h     HAVE_MALLOC_H)
++CHECK_INCLUDE_FILES(stdlib.h     HAVE_STDLIB_H)
++CHECK_INCLUDE_FILES(stddef.h     HAVE_STDDEF_H)
++CHECK_INCLUDE_FILES(string.h     HAVE_STRING_H)
++#CHECK_INCLUDE_FILES(dirent.h     HAVE_DIRENT_H)
++SET(HAVE_DIRENT_H 1)
++CHECK_INCLUDE_FILES(crtdefs.h    HAVE_CRTDEFS_H)
++
++CHECK_FUNCTION_EXISTS(posix_memalign HAVE_POSIX_MEMALIGN)
++CHECK_FUNCTION_EXISTS(memalign   HAVE_MEMALIGN)
++CHECK_FUNCTION_EXISTS(valloc     HAVE_VALLOC)
++CHECK_FUNCTION_EXISTS(atexit     HAVE_ATEXIT)
++CHECK_FUNCTION_EXISTS(on_exit    HAVE_ON_EXIT)
++CHECK_FUNCTION_EXISTS(getcwd     HAVE_GETCWD)
++CHECK_FUNCTION_EXISTS(strerror   HAVE_STRERROR)
++CHECK_FUNCTION_EXISTS(setlocale  HAVE_SETLOCALE)
++CHECK_FUNCTION_EXISTS(vasprintf  HAVE_VASPRINTF)
++CHECK_FUNCTION_EXISTS(memmove    HAVE_MEMMOVE)
++
++IF(HAVE_MEMMOVE)
++	SET(MEMMOVE "#define g_memmove(dest,src,len) G_STMT_START { memmove ((dest), (src), (len)); } G_STMT_END")
++ENDIF(HAVE_MEMMOVE)
++
++
++SET(CMAKE_REQUIRED_LIBRARIES dl)
++CHECK_FUNCTION_EXISTS(dlerror    G_MODULE_HAVE_DLERROR)
++SET(CMAKE_REQUIRED_LIBRARIES)
++
++SET(G_MODULE_NEED_USCORE 0)
++SET(G_MODULE_BROKEN_RTLD_GLOBAL 0)
++IF(NOT G_MODULE_HAVE_DLERROR)
++  SET(G_MODULE_HAVE_DLERROR 0)
++ENDIF(NOT G_MODULE_HAVE_DLERROR)
++
++
++#CONFIGURE_FILE(config.h.win32.in ${CMAKE_CURRENT_BINARY_DIR}/config.h)
++CONFIGURE_FILE(config.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config.h)
++CONFIGURE_FILE(glibconfig.h.win32.in ${CMAKE_CURRENT_BINARY_DIR}/glibconfig.h)
++
++# Speed up build process excluding unused header files
++ADD_DEFINITIONS(-DWIN32_LEAN_AND_MEAN)
++# force the correct version for the redist manifest
++ADD_DEFINITIONS(-D_BIND_TO_CURRENT_MFC_VERSION=1 -D_BIND_TO_CURRENT_CRT_VERSION=1)
++# turn off security warnings for system calls
++ADD_DEFINITIONS(-D_CRT_SECURE_NO_WARNINGS)
++ADD_DEFINITIONS(-D_CRT_SECURE_NO_DEPRECATE)
++
++ADD_DEFINITIONS(-D_UNICODE)     # Assumed in source, if windows
++ADD_DEFINITIONS(-DHAVE_CONFIG_H)
++ADD_DEFINITIONS(-DGETTEXT_PACKAGE=\"glib-2.0\")
++ADD_DEFINITIONS(-DLIBDIR=\"lib/\")
++
++INCLUDE_DIRECTORIES(${CMAKE_CURRENT_BINARY_DIR})
++INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/build/win32/dirent)
++INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR})
++INCLUDE_DIRECTORIES(glib/)
++
++##############################################################################
++# Build files and libraries
++##############################################################################
++
++ADD_LIBRARY(glib-2.0 SHARED
++	glib/glib.def
++	build/win32/dirent/dirent.c
++	glib/garray.c
++	glib/gutils.c
++	glib/gtestutils.c
++	glib/gstrfuncs.c
++	glib/gstring.c
++	glib/gmessages.c
++	glib/gmem.c
++	glib/grand.c
++	glib/gtimer.c
++	glib/gslist.c
++	glib/ghash.c
++	glib/glist.c
++	glib/gfileutils.c
++	glib/gdataset.c
++	glib/gstdio.c
++	glib/gerror.c
++	glib/gutf8.c
++	glib/gconvert.c
++	glib/goption.c
++	glib/gatomic.c
++	glib/gmain.c
++	glib/gqsort.c
++	glib/gscanner.c
++	glib/gpattern.c
++	glib/gprimes.c
++	glib/guniprop.c
++	glib/gunidecomp.c
++	glib/gprintf.c
++	glib/gthread.c
++	glib/gthreadpool.c
++	glib/gslice.c
++	glib/gasyncqueue.c
++	glib/gqueue.c
++	glib/gkeyfile.c
++	glib/gdir.c
++	glib/libcharset/localcharset.c
++
++        glib/gwin32.c
++	glib/gbacktrace.c
++	glib/gbase64.c
++	glib/gbookmarkfile.c
++	glib/gcache.c
++	glib/gchecksum.c
++	glib/gcompletion.c
++	glib/gdate.c
++	glib/ghook.c
++	glib/giochannel.c
++	glib/giowin32.c
++	glib/gmappedfile.c
++	glib/gmarkup.c
++	glib/gnode.c
++	glib/gregex.c
++	glib/grel.c
++	glib/gsequence.c
++	glib/gshell.c
++	glib/gspawn-win32.c
++	glib/gtree.c
++	glib/gunibreak.c
++	glib/gunicollate.c
++	glib/gurifuncs.c
++
++	${PCRE_SOURCES}
++)
++
++# Disable optimization to make compiler complete on x64
++set_source_files_properties("glib/gtestutils.c"
++			    "gthread/gthread-impl.c"
++			    PROPERTIES COMPILE_FLAGS "/Od")
++
++TARGET_LINK_LIBRARIES(glib-2.0 ${PCRE_LIB} ws2_32)
++
++CONFIGURE_FILE(gmodule/gmoduleconf.h.in ${CMAKE_CURRENT_BINARY_DIR}/gmoduleconf.h)
++
++ADD_LIBRARY(gmodule-2.0 SHARED
++	gmodule/gmodule.def
++	gmodule/gmodule.c
++)
++TARGET_LINK_LIBRARIES(gmodule-2.0 glib-2.0 gthread-2.0)
++
++ADD_DEFINITIONS(-DG_THREAD_SOURCE=\"gthread-win32.c\")
++SET(POSIX_YIELD_FUNC sched_yield)
++
++ADD_LIBRARY(gthread-2.0 SHARED
++	gthread/gthread.def
++	gthread/gthread-impl.c
++)
++TARGET_LINK_LIBRARIES(gthread-2.0 glib-2.0)
++
++##############################################################################
++# Build executables
++##############################################################################
++
++ADD_EXECUTABLE(gspawn-win32-helper-console
++	glib/gspawn-win32-helper.c
++)
++ADD_EXECUTABLE(gspawn-win32-helper WIN32
++	glib/gspawn-win32-helper.c
++)
++TARGET_LINK_LIBRARIES(gspawn-win32-helper-console glib-2.0 -entry:WinMainCRTStartup)
++TARGET_LINK_LIBRARIES(gspawn-win32-helper         glib-2.0)
++
++# STRING(REPLACE "/ENTRY:mainACRTStartup" "/ENTRY:WinMainCRTStartup" CMAKE_EXE_LINKER_FLAGS ${CMAKE_EXE_LINKER_FLAGS})
++# /ENTRY:WinMainCRTStartup
++
++##############################################################################
++# Install binaries
++##############################################################################
++
++INSTALL(TARGETS
++        glib-2.0 gmodule-2.0 gthread-2.0
++        gspawn-win32-helper-console gspawn-win32-helper
++        RUNTIME DESTINATION bin
++        LIBRARY DESTINATION lib
++        ARCHIVE DESTINATION lib)
++
++##############################################################################
++# Create and install pkg-config files
++##############################################################################
++
++# Installation paths
++SET(prefix      "${CMAKE_INSTALL_PREFIX}")
++SET(exec_prefix "\${prefix}")
++SET(includedir  "\${prefix}/include")
++SET(libdir      "\${exec_prefix}/lib")
++
++# These are just to set empty
++SET(GLIB_EXTRA_CFLAGS)  # -mms-bitfields in win32 binaries from gnome.org
++SET(G_MODULE_LDFLAGS)
++SET(G_MODULE_LIBS)
++SET(G_THREAD_CFLAGS)
++SET(G_THREAD_LIBS)
++SET(ICONV_LIBS)
++SET(INTLLIBS)           # -lintl in win32 binaries from gnome.org
++
++# Dynamic loading
++SET(G_MODULE_SUPPORTED "true")
++SET(GIO_MODULE_DIR "\${libdir}/gio/modules")
++
++CONFIGURE_FILE(glib-2.0.pc.in              ${CMAKE_CURRENT_BINARY_DIR}/glib-2.0.pc)
++CONFIGURE_FILE(gmodule-2.0.pc.in           ${CMAKE_CURRENT_BINARY_DIR}/gmodule-2.0.pc)
++CONFIGURE_FILE(gmodule-no-export-2.0.pc.in ${CMAKE_CURRENT_BINARY_DIR}/gmodule-no-export-2.0.pc)
++CONFIGURE_FILE(gobject-2.0.pc.in           ${CMAKE_CURRENT_BINARY_DIR}/gobject-2.0.pc)
++CONFIGURE_FILE(gthread-2.0.pc.in           ${CMAKE_CURRENT_BINARY_DIR}/gthread-2.0.pc)
++CONFIGURE_FILE(gio-2.0.pc.in               ${CMAKE_CURRENT_BINARY_DIR}/gio-2.0.pc)
++
++INSTALL(FILES
++	${CMAKE_CURRENT_BINARY_DIR}/glib-2.0.pc
++	${CMAKE_CURRENT_BINARY_DIR}/gmodule-2.0.pc
++	${CMAKE_CURRENT_BINARY_DIR}/gmodule-no-export-2.0.pc
++	${CMAKE_CURRENT_BINARY_DIR}/gobject-2.0.pc
++	${CMAKE_CURRENT_BINARY_DIR}/gthread-2.0.pc
++	${CMAKE_CURRENT_BINARY_DIR}/gio-2.0.pc
++	DESTINATION lib/pkgconfig
++)	
++
++##############################################################################
++# Install headers
++##############################################################################
++
++INSTALL(FILES
++	glibconfig.h
++	glib/glib.h
++	glib/glib-object.h
++	gmodule/gmodule.h
++	DESTINATION include/glib-2.0
++)
++
++INSTALL(FILES
++	glibconfig.h
++	DESTINATION lib/glib-2.0/include
++)
++
++INSTALL(FILES
++	gio/gappinfo.h
++	gio/gasyncresult.h
++	gio/gbufferedinputstream.h
++	gio/gbufferedoutputstream.h
++	gio/gcancellable.h
++	gio/gcontenttype.h
++	gio/gdatainputstream.h
++	gio/gdataoutputstream.h
++	gio/gdrive.h
++	gio/gfile.h
++	gio/gfileattribute.h
++	gio/gfileenumerator.h
++	gio/gfileicon.h
++	gio/gfileinfo.h
++	gio/gfileinputstream.h
++	gio/gfilemonitor.h
++	gio/gfilenamecompleter.h
++	gio/gfileoutputstream.h
++	gio/gfilterinputstream.h
++	gio/gfilteroutputstream.h
++	gio/gicon.h
++	gio/ginputstream.h
++	gio/gio.h
++	gio/gioenumtypes.h
++	gio/gioerror.h
++	gio/giomodule.h
++	gio/gioscheduler.h
++	gio/gloadableicon.h
++	gio/gmemoryinputstream.h
++	gio/gmemoryoutputstream.h
++	gio/gmount.h
++	gio/gmountoperation.h
++	gio/gnativevolumemonitor.h
++	gio/goutputstream.h
++	gio/gseekable.h
++	gio/gsimpleasyncresult.h
++	gio/gthemedicon.h
++	gio/gvfs.h
++	gio/gvolume.h
++	gio/gvolumemonitor.h
++
++	DESTINATION include/glib-2.0/gio
++)
++
++INSTALL(FILES
++	glib/galloca.h
++	glib/garray.h
++	glib/gasyncqueue.h
++	glib/gatomic.h
++	glib/gbacktrace.h
++	glib/gbase64.h
++	glib/gbookmarkfile.h
++	glib/gcache.h
++	glib/gchecksum.h
++	glib/gcompletion.h
++	glib/gconvert.h
++	glib/gdataset.h
++	glib/gdate.h
++	glib/gdir.h
++	glib/gerror.h
++	glib/gfileutils.h
++	glib/ghash.h
++	glib/ghook.h
++	glib/gi18n-lib.h
++	glib/gi18n.h
++	glib/giochannel.h
++	glib/gkeyfile.h
++	glib/glist.h
++	glib/gmacros.h
++	glib/gmain.h
++	glib/gmappedfile.h
++	glib/gmarkup.h
++	glib/gmem.h
++	glib/gmessages.h
++	glib/gnode.h
++	glib/goption.h
++	glib/gpattern.h
++	glib/gprimes.h
++	glib/gprintf.h
++	glib/gqsort.h
++	glib/gquark.h
++	glib/gqueue.h
++	glib/grand.h
++	glib/gregex.h
++	glib/grel.h
++	glib/gscanner.h
++	glib/gsequence.h
++	glib/gshell.h
++	glib/gslice.h
++	glib/gslist.h
++	glib/gspawn.h
++	glib/gstdio.h
++	glib/gstrfuncs.h
++	glib/gstring.h
++	glib/gtestutils.h
++	glib/gthread.h
++	glib/gthreadpool.h
++	glib/gtimer.h
++	glib/gtree.h
++	glib/gtypes.h
++	glib/gunicode.h
++	glib/gurifuncs.h
++	glib/gutils.h
++	glib/gwin32.h
++	
++	DESTINATION include/glib-2.0/glib
++)
++
++INSTALL(FILES
++	gobject/gboxed.h
++	gobject/gclosure.h
++	gobject/genums.h
++	gobject/gmarshal.h
++	gobject/gobject.h
++	gobject/gparam.h
++	gobject/gparamspecs.h
++	gobject/gsignal.h
++	gobject/gsourceclosure.h
++	gobject/gtype.h
++	gobject/gtypemodule.h
++	gobject/gtypeplugin.h
++	gobject/gvalue.h
++	gobject/gvaluearray.h
++	gobject/gvaluecollector.h
++	gobject/gvaluetypes.h
++	gobject/gobjectnotifyqueue.c
++
++	DESTINATION include/glib-2.0/gobject
++)
+
+--- config.h.cmake	1970-01-01 01:00:00.000000000 +0100
++++ config.h.cmake	2012-10-24 15:34:51.996599800 +0200
+@@ -0,0 +1,245 @@
++#cmakedefine HAVE_STDINT_H
++#cmakedefine HAVE_SYS_TIME_H
++#cmakedefine HAVE_SYS_TREE_H
++#cmakedefine HAVE_FCNTL_H
++#cmakedefine HAVE_STDARG_H
++#cmakedefine HAVE_INTTYPES_H
++#cmakedefine HAVE_STDINT_H
++#cmakedefine HAVE_POLL_H
++#cmakedefine HAVE_SIGNAL_H
++#cmakedefine HAVE_UNISTD_H
++#cmakedefine HAVE_SYS_DEVPOLL_H
++#cmakedefine HAVE_PORT_H
++#cmakedefine HAVE_KQUEUE_H
++#cmakedefine HAVE_MALLOC_H @HAVE_MALLOC_H@
++#cmakedefine HAVE_STDLIB_H @HAVE_STDLIB_H@
++#cmakedefine HAVE_STDDEF_H @HAVE_STDDEF_H@
++#cmakedefine HAVE_STRING_H @HAVE_STRING_H@
++#cmakedefine HAVE_DIRENT_H @HAVE_DIRENT_H@
++#cmakedefine HAVE_CRTDEFS_H @HAVE_CRTDEFS_H@
++
++#cmakedefine HAVE_POSIX_MEMALIGN @HAVE_POSIX_MEMALIGN@
++#cmakedefine HAVE_MEMALIGN @HAVE_MEMALIGN@
++#cmakedefine HAVE_VALLOC   @HAVE_VALLOC@
++#cmakedefine HAVE_ATEXIT
++#cmakedefine HAVE_ON_EXIT
++#cmakedefine HAVE_VASPRINTF @HAVE_VASPRINTF@
++#cmakedefine HAVE_MEMMOVE   @HAVE_MEMMOVE@
++
++#cmakedefine HAVE_GETCWD 
++#cmakedefine HAVE_STRERROR  @HAVE_STRERROR@
++#cmakedefine HAVE_SETLOCALE @HAVE_SETLOCALE@
++
++#define HAVE_GOOD_PRINTF 1
++
++#define GLIB_SIZEOF_LONG @SIZEOF_LONG@
++#define SIZEOF_CHAR @SIZEOF_CHAR@
++#define GLIB_LOCALE_DIR "share/glib-2.0/"
++#define NO_SYS_SIGLIST_DECL 1
++#define NO_SYS_SIGLIST 1
++/* original follows */
++/* glibconfig.h.win32.in Merged from two versions generated by configure for gcc and MSVC.  */
++/* glibconfig.h
++ *
++ * This is a generated file.  Please modify 'configure.in'
++ */
++
++#ifndef __G_LIBCONFIG_H__
++#define __G_LIBCONFIG_H__
++
++#include <glib/gmacros.h>
++
++#include <limits.h>
++#include <float.h>
++
++G_BEGIN_DECLS
++
++#define G_MINFLOAT	FLT_MIN
++#define G_MAXFLOAT	FLT_MAX
++#define G_MINDOUBLE	DBL_MIN
++#define G_MAXDOUBLE	DBL_MAX
++#define G_MINSHORT	SHRT_MIN
++#define G_MAXSHORT	SHRT_MAX
++#define G_MAXUSHORT	USHRT_MAX
++#define G_MININT	INT_MIN
++#define G_MAXINT	INT_MAX
++#define G_MAXUINT	UINT_MAX
++#define G_MINLONG	LONG_MIN
++#define G_MAXLONG	LONG_MAX
++#define G_MAXULONG	ULONG_MAX
++
++typedef signed char gint8;
++typedef unsigned char guint8;
++typedef signed short gint16;
++typedef unsigned short guint16;
++#define G_GINT16_MODIFIER "h"
++#define G_GINT16_FORMAT "hi"
++#define G_GUINT16_FORMAT "hu"
++typedef signed int gint32;
++typedef unsigned int guint32;
++#define G_GINT32_MODIFIER ""
++#define G_GINT32_FORMAT "i"
++#define G_GUINT32_FORMAT "u"
++#define G_HAVE_GINT64 1          /* deprecated, always true */
++
++#ifndef _MSC_VER
++G_GNUC_EXTENSION typedef signed long long gint64;
++G_GNUC_EXTENSION typedef unsigned long long guint64;
++#else /* _MSC_VER */
++typedef signed __int64 gint64;
++typedef unsigned __int64 guint64;
++#endif /* _MSC_VER */
++
++#ifndef _MSC_VER
++#define G_GINT64_CONSTANT(val)	(G_GNUC_EXTENSION (val##LL))
++#else /* _MSC_VER */
++#define G_GINT64_CONSTANT(val)	(val##i64)
++#endif /* _MSC_VER */
++#ifndef _MSC_VER
++#define G_GUINT64_CONSTANT(val)	(G_GNUC_EXTENSION (val##ULL))
++#else /* _MSC_VER */
++#define G_GUINT64_CONSTANT(val)	(val##Ui64)
++#endif /* _MSC_VER */
++#define G_GINT64_MODIFIER "I64"
++#define G_GINT64_FORMAT "I64i"
++#define G_GUINT64_FORMAT "I64u"
++
++#define GLIB_SIZEOF_VOID_P 4
++#define GLIB_SIZEOF_LONG   4
++#define GLIB_SIZEOF_SIZE_T 4
++
++typedef signed int gssize;
++typedef unsigned int gsize;
++#define G_GSIZE_MODIFIER ""
++#define G_GSSIZE_FORMAT "i"
++#define G_GSIZE_FORMAT "u"
++
++#define G_MAXSIZE	G_MAXUINT
++#define G_MINSSIZE	G_MININT
++#define G_MAXSSIZE	G_MAXINT
++
++typedef gint64 goffset;
++#define G_MINOFFSET	G_MININT64
++#define G_MAXOFFSET	G_MAXINT64
++
++
++#define GPOINTER_TO_INT(p)	((gint)   (p))
++#define GPOINTER_TO_UINT(p)	((guint)  (p))
++
++#define GINT_TO_POINTER(i)	((gpointer)  (i))
++#define GUINT_TO_POINTER(u)	((gpointer)  (u))
++
++#ifdef NeXT /* @#%@! NeXTStep */
++# define g_ATEXIT(proc)	(!atexit (proc))
++#else
++# define g_ATEXIT(proc)	(atexit (proc))
++#endif
++
++#define g_memmove(dest,src,len) G_STMT_START { memmove ((dest), (src), (len)); } G_STMT_END
++
++#define GLIB_MAJOR_VERSION 2
++#define GLIB_MINOR_VERSION 16
++#define GLIB_MICRO_VERSION 6
++#define GLIB_INTERFACE_AGE 6
++#define GLIB_BINARY_AGE (GLIB_MINOR_VERSION * 100 + GLIB_MICRO_VERSION)
++
++#define G_OS_WIN32
++#define G_PLATFORM_WIN32
++
++#ifndef _MSC_VER
++#define G_VA_COPY	va_copy
++#endif /* not _MSC_VER */
++
++#define G_VA_COPY_AS_ARRAY 1
++
++#ifdef	__cplusplus
++#define	G_HAVE_INLINE	1
++#else	/* !__cplusplus */
++#ifndef _MSC_VER
++#define G_HAVE_INLINE 1
++#endif /* _MSC_VER */
++#define G_HAVE___INLINE 1
++#if !defined(_MSC_VER) && !defined(__DMC__)
++#define G_HAVE___INLINE__ 1
++#endif /* !_MSC_VER and !__DMC__ */
++#endif	/* !__cplusplus */
++
++#define G_CAN_INLINE	1
++
++#ifndef _MSC_VER
++#define G_HAVE_ISO_VARARGS 1
++
++/* gcc-2.95.x supports both gnu style and ISO varargs, but if -ansi
++ * is passed ISO vararg support is turned off, and there is no work
++ * around to turn it on, so we unconditionally turn it off.
++ */
++#if __GNUC__ == 2 && __GNUC_MINOR__ == 95
++#  undef G_HAVE_ISO_VARARGS
++#endif
++
++#define G_HAVE_GNUC_VARARGS 1
++#else /* _MSC_VER */
++/* varargs macros available since msvc8 (vs2005) */
++#  if _MSC_VER >= 1400
++#    define G_HAVE_ISO_VARARGS 1
++#   endif
++#endif /* not _MSC_VER */
++#define G_HAVE_GROWING_STACK 0
++
++#define G_GNUC_INTERNAL
++
++#define G_THREADS_ENABLED
++#define G_THREADS_IMPL_WIN32
++typedef struct _GMutex* GStaticMutex;
++#define G_STATIC_MUTEX_INIT NULL
++#define g_static_mutex_get_mutex(mutex) \
++  (g_static_mutex_get_mutex_impl_shortcut (mutex))
++/* This represents a system thread as used by the implementation. An
++ * alien implementaion, as loaded by g_thread_init can only count on
++ * "sizeof (gpointer)" bytes to store their info. We however need more
++ * for some of our native implementations. */
++typedef union _GSystemThread GSystemThread;
++union _GSystemThread
++{
++  char   data[4];
++  double dummy_double;
++  void  *dummy_pointer;
++  long   dummy_long;
++};
++
++#define GINT16_TO_LE(val)	((gint16) (val))
++#define GUINT16_TO_LE(val)	((guint16) (val))
++#define GINT16_TO_BE(val)	((gint16) GUINT16_SWAP_LE_BE (val))
++#define GUINT16_TO_BE(val)	(GUINT16_SWAP_LE_BE (val))
++#define GINT32_TO_LE(val)	((gint32) (val))
++#define GUINT32_TO_LE(val)	((guint32) (val))
++#define GINT32_TO_BE(val)	((gint32) GUINT32_SWAP_LE_BE (val))
++#define GUINT32_TO_BE(val)	(GUINT32_SWAP_LE_BE (val))
++#define GINT64_TO_LE(val)	((gint64) (val))
++#define GUINT64_TO_LE(val)	((guint64) (val))
++#define GINT64_TO_BE(val)	((gint64) GUINT64_SWAP_LE_BE (val))
++#define GUINT64_TO_BE(val)	(GUINT64_SWAP_LE_BE (val))
++#define GLONG_TO_LE(val)	((glong) GINT32_TO_LE (val))
++#define GULONG_TO_LE(val)	((gulong) GUINT32_TO_LE (val))
++#define GLONG_TO_BE(val)	((glong) GINT32_TO_BE (val))
++#define GULONG_TO_BE(val)	((gulong) GUINT32_TO_BE (val))
++#define GINT_TO_LE(val)		((gint) GINT32_TO_LE (val))
++#define GUINT_TO_LE(val)	((guint) GUINT32_TO_LE (val))
++#define GINT_TO_BE(val)		((gint) GINT32_TO_BE (val))
++#define GUINT_TO_BE(val)	((guint) GUINT32_TO_BE (val))
++#define G_BYTE_ORDER G_LITTLE_ENDIAN
++
++#define GLIB_SYSDEF_POLLIN =1
++#define GLIB_SYSDEF_POLLOUT =4
++#define GLIB_SYSDEF_POLLPRI =2
++#define GLIB_SYSDEF_POLLHUP =16
++#define GLIB_SYSDEF_POLLERR =8
++#define GLIB_SYSDEF_POLLNVAL =32
++
++#define G_MODULE_SUFFIX "dll"
++
++typedef void * GPid;
++
++G_END_DECLS
++
++#endif /* GLIBCONFIG_H */
+\ No newline at end of file
+
+--- glib/gbacktrace.h	2008-09-12 19:55:51.000000000 +0200
++++ glib/gbacktrace.h	2012-10-24 15:35:06.261154500 +0200
+@@ -50,6 +50,8 @@
+ #  define G_BREAKPOINT()	G_STMT_START{ __asm__ __volatile__ ("int $03"); }G_STMT_END
+ #elif (defined (_MSC_VER) || defined (__DMC__)) && defined (_M_IX86)
+ #  define G_BREAKPOINT()	G_STMT_START{ __asm int 3h }G_STMT_END
++#elif defined (_MSC_VER) && defined (_M_X64)
++#  define G_BREAKPOINT()        G_STMT_START{ }G_STMT_END
+ #elif defined (__alpha__) && !defined(__osf__) && defined (__GNUC__) && __GNUC__ >= 2
+ #  define G_BREAKPOINT()	G_STMT_START{ __asm__ __volatile__ ("bpt"); }G_STMT_END
+ #else	/* !__i386__ && !__alpha__ */
+
+--- glib/glib.def	1970-01-01 01:00:00.000000000 +0100
++++ glib/glib.def	2012-10-24 15:34:47.771953600 +0200
+@@ -0,0 +1,1310 @@
++EXPORTS
++
++g_array_append_vals
++g_array_free
++g_array_insert_vals
++g_array_new
++g_array_prepend_vals
++g_array_remove_index
++g_array_remove_index_fast
++g_array_remove_range
++g_array_set_size
++g_array_sized_new
++g_array_sort
++g_array_sort_with_data
++g_byte_array_append
++g_byte_array_free
++g_byte_array_new
++g_byte_array_prepend
++g_byte_array_remove_index
++g_byte_array_remove_index_fast
++g_byte_array_remove_range
++g_byte_array_set_size
++g_byte_array_sized_new
++g_byte_array_sort
++g_byte_array_sort_with_data
++g_ptr_array_add
++g_ptr_array_foreach
++g_ptr_array_free
++g_ptr_array_new
++g_ptr_array_remove
++g_ptr_array_remove_fast
++g_ptr_array_remove_index
++g_ptr_array_remove_index_fast
++g_ptr_array_remove_range
++g_ptr_array_set_size
++g_ptr_array_sized_new
++g_ptr_array_sort
++g_ptr_array_sort_with_data
++
++g_async_queue_length
++g_async_queue_length_unlocked
++g_async_queue_lock
++g_async_queue_new
++g_async_queue_new_full
++g_async_queue_pop
++g_async_queue_pop_unlocked
++g_async_queue_push
++g_async_queue_push_unlocked
++g_async_queue_push_sorted
++g_async_queue_push_sorted_unlocked
++g_async_queue_ref
++g_async_queue_sort
++g_async_queue_sort_unlocked
++g_async_queue_timed_pop
++g_async_queue_timed_pop_unlocked
++g_async_queue_try_pop
++g_async_queue_try_pop_unlocked
++g_async_queue_unlock
++g_async_queue_unref
++
++g_async_queue_ref_unlocked
++g_async_queue_unref_and_unlock
++
++g_atomic_int_add
++g_atomic_int_compare_and_exchange
++g_atomic_int_exchange_and_add
++g_atomic_pointer_compare_and_exchange
++
++g_atomic_int_get
++g_atomic_pointer_get
++g_atomic_int_set
++g_atomic_pointer_set
++
++g_on_error_query
++g_on_error_stack_trace
++
++g_base64_encode_step
++g_base64_encode_close
++g_base64_encode 
++g_base64_decode_step
++g_base64_decode 
++
++g_bookmark_file_error_quark
++g_bookmark_file_new
++g_bookmark_file_free
++g_bookmark_file_load_from_file
++g_bookmark_file_load_from_data
++g_bookmark_file_load_from_data_dirs
++g_bookmark_file_to_data
++g_bookmark_file_to_file
++g_bookmark_file_set_title
++g_bookmark_file_get_title 
++g_bookmark_file_set_description
++g_bookmark_file_get_description 
++g_bookmark_file_set_mime_type
++g_bookmark_file_get_mime_type 
++g_bookmark_file_set_groups
++g_bookmark_file_add_group
++g_bookmark_file_has_group
++g_bookmark_file_get_groups 
++g_bookmark_file_add_application
++g_bookmark_file_has_application
++g_bookmark_file_get_applications 
++g_bookmark_file_set_app_info
++g_bookmark_file_get_app_info
++g_bookmark_file_set_is_private
++g_bookmark_file_get_is_private
++g_bookmark_file_set_icon
++g_bookmark_file_get_icon
++g_bookmark_file_set_added
++g_bookmark_file_get_added
++g_bookmark_file_set_modified
++g_bookmark_file_get_modified
++g_bookmark_file_set_visited
++g_bookmark_file_get_visited
++g_bookmark_file_has_item
++g_bookmark_file_get_size
++g_bookmark_file_get_uris 
++g_bookmark_file_remove_group
++g_bookmark_file_remove_application
++g_bookmark_file_remove_item
++g_bookmark_file_move_item
++
++g_cache_destroy
++g_cache_insert
++g_cache_key_foreach
++g_cache_new
++g_cache_remove
++
++g_cache_value_foreach
++
++g_checksum_type_get_length
++g_checksum_new
++g_checksum_copy
++g_checksum_free
++g_checksum_update
++g_checksum_get_string
++g_checksum_get_digest
++g_compute_checksum_for_data
++g_compute_checksum_for_string
++
++g_completion_add_items
++g_completion_clear_items
++g_completion_complete
++g_completion_complete_utf8
++g_completion_free
++g_completion_new
++g_completion_remove_items
++g_completion_set_compare
++
++g_get_filename_charsets
++g_convert 
++g_convert_error_quark
++g_convert_with_fallback 
++g_convert_with_iconv 
++g_iconv
++g_iconv_close
++g_iconv_open
++g_locale_from_utf8 
++g_locale_to_utf8 
++g_filename_display_name 
++g_filename_display_basename 
++g_filename_from_uri PRIVATE 
++g_filename_from_utf8 PRIVATE 
++g_filename_to_uri PRIVATE 
++g_filename_to_utf8 PRIVATE  
++
++g_filename_from_uri_utf8 
++g_filename_from_utf8_utf8
++g_filename_to_uri_utf8 
++g_filename_to_utf8_utf8
++
++g_uri_list_extract_uris 
++
++g_datalist_clear
++g_datalist_foreach
++g_datalist_get_flags
++g_datalist_id_get_data
++g_datalist_id_remove_no_notify
++g_datalist_id_set_data_full
++g_datalist_set_flags
++g_datalist_unset_flags
++g_datalist_init
++g_dataset_destroy
++g_dataset_foreach
++g_dataset_id_get_data
++g_dataset_id_remove_no_notify
++g_dataset_id_set_data_full
++
++g_quark_from_static_string
++g_quark_from_string
++g_quark_to_string 
++g_quark_try_string
++g_intern_string
++g_intern_static_string
++
++g_date_add_days
++g_date_add_months
++g_date_add_years
++g_date_clamp
++g_date_clear
++g_date_compare
++g_date_days_between
++g_date_free
++g_date_get_day
++g_date_get_day_of_year
++g_date_get_days_in_month
++g_date_get_iso8601_week_of_year
++g_date_get_julian
++g_date_get_monday_week_of_year
++g_date_get_monday_weeks_in_year 
++g_date_get_month
++g_date_get_sunday_week_of_year
++g_date_get_sunday_weeks_in_year 
++g_date_get_weekday
++g_date_get_year
++g_date_is_first_of_month
++g_date_is_last_of_month
++g_date_is_leap_year 
++g_date_new
++g_date_new_dmy
++g_date_new_julian
++g_date_order
++g_date_set_day
++g_date_set_dmy
++g_date_set_julian
++g_date_set_month
++g_date_set_parse
++
++g_date_set_time
++
++g_date_set_time_t
++g_date_set_time_val
++g_date_set_year
++g_date_strftime
++g_date_subtract_days
++g_date_subtract_months
++g_date_subtract_years
++g_date_to_struct_tm
++g_date_valid
++g_date_valid_day 
++g_date_valid_dmy
++g_date_valid_julian 
++g_date_valid_month 
++g_date_valid_weekday 
++g_date_valid_year 
++
++g_dir_close
++g_dir_open PRIVATE
++g_dir_read_name PRIVATE
++
++g_dir_open_utf8
++g_dir_read_name_utf8
++
++g_dir_rewind
++
++g_clear_error
++g_error_copy
++g_error_free
++g_error_matches
++g_error_new ;G_GNUC_PRINTF(3,4)
++g_error_new_literal
++g_propagate_error
++g_set_error ;G_GNUC_PRINTF(4,5)
++g_prefix_error ;G_GNUC_PRINTF(2,3)
++g_propagate_prefixed_error ;G_GNUC_PRINTF(3,4)
++
++g_build_filename  
++g_build_filenamev 
++g_build_path  
++g_build_pathv  
++g_file_error_from_errno
++g_file_error_quark
++g_file_get_contents PRIVATE
++g_file_set_contents
++g_file_open_tmp PRIVATE
++g_file_test PRIVATE
++g_file_read_link
++g_format_size_for_display
++g_mkstemp PRIVATE
++g_mkdir_with_parents
++
++g_file_get_contents_utf8
++g_file_open_tmp_utf8
++g_file_test_utf8
++g_mkstemp_utf8
++
++g_hash_table_destroy
++g_hash_table_unref
++g_hash_table_ref
++g_hash_table_find
++g_hash_table_foreach
++g_hash_table_foreach_remove
++g_hash_table_foreach_steal
++g_hash_table_get_keys
++g_hash_table_get_values
++g_hash_table_insert
++g_hash_table_lookup
++g_hash_table_lookup_extended
++g_hash_table_new
++g_hash_table_new_full
++g_hash_table_remove
++g_hash_table_remove_all
++g_hash_table_replace
++g_hash_table_size
++g_hash_table_steal
++g_hash_table_steal_all
++g_hash_table_iter_init
++g_hash_table_iter_next
++g_hash_table_iter_get_hash_table
++g_hash_table_iter_remove
++g_hash_table_iter_steal
++
++g_hook_alloc
++g_hook_compare_ids
++g_hook_destroy
++g_hook_destroy_link
++g_hook_find
++g_hook_find_data
++g_hook_find_func
++g_hook_find_func_data
++g_hook_first_valid
++g_hook_free
++g_hook_get
++g_hook_insert_before
++g_hook_insert_sorted
++g_hook_list_clear
++g_hook_list_init
++g_hook_list_invoke
++g_hook_list_invoke_check
++g_hook_list_marshal
++g_hook_list_marshal_check
++g_hook_next_valid
++g_hook_prepend
++g_hook_ref
++g_hook_unref
++
++g_io_add_watch
++g_io_add_watch_full
++g_io_create_watch
++g_io_channel_error_from_errno
++g_io_channel_error_quark
++g_io_channel_flush
++g_io_channel_get_buffer_condition
++g_io_channel_get_buffered
++g_io_channel_get_buffer_size
++g_io_channel_get_close_on_unref
++g_io_channel_get_encoding
++g_io_channel_get_flags
++g_io_channel_get_line_term
++g_io_channel_init
++g_io_channel_read_chars
++g_io_channel_read_line
++g_io_channel_read_line_string
++g_io_channel_read_to_end
++g_io_channel_read_unichar
++g_io_channel_ref
++g_io_channel_seek_position
++g_io_channel_set_buffered
++g_io_channel_set_buffer_size
++g_io_channel_set_close_on_unref
++g_io_channel_set_encoding
++g_io_channel_set_flags
++g_io_channel_set_line_term
++g_io_channel_shutdown
++g_io_channel_unref
++
++g_io_channel_close
++g_io_channel_read
++g_io_channel_seek
++g_io_channel_write
++
++g_io_channel_write_chars
++g_io_channel_write_unichar
++
++g_io_channel_unix_get_fd
++g_io_channel_unix_new
++g_io_channel_new_file PRIVATE
++g_io_channel_new_file_utf8
++g_io_channel_win32_get_fd
++g_io_channel_win32_make_pollfd
++g_io_channel_win32_new_fd
++g_io_channel_win32_new_messages
++g_io_channel_win32_new_socket
++g_io_channel_win32_new_stream_socket
++g_io_channel_win32_poll
++g_io_channel_win32_set_debug
++
++g_key_file_error_quark
++g_key_file_free
++g_key_file_get_boolean
++g_key_file_get_boolean_list 
++g_key_file_get_comment 
++g_key_file_get_groups 
++g_key_file_get_double
++g_key_file_get_double_list 
++g_key_file_get_integer
++g_key_file_get_integer_list 
++g_key_file_get_keys 
++g_key_file_get_locale_string 
++g_key_file_get_locale_string_list 
++g_key_file_get_start_group 
++g_key_file_get_string 
++g_key_file_get_string_list 
++g_key_file_get_value 
++g_key_file_has_group
++g_key_file_has_key
++g_key_file_load_from_dirs
++g_key_file_load_from_data
++g_key_file_load_from_data_dirs
++g_key_file_load_from_file
++g_key_file_new
++g_key_file_remove_comment
++g_key_file_remove_group
++g_key_file_remove_key
++g_key_file_set_boolean
++g_key_file_set_boolean_list
++g_key_file_set_comment
++g_key_file_set_double
++g_key_file_set_double_list
++g_key_file_set_integer
++g_key_file_set_integer_list
++g_key_file_set_list_separator
++g_key_file_set_locale_string
++g_key_file_set_locale_string_list
++g_key_file_set_string
++g_key_file_set_string_list
++g_key_file_set_value
++g_key_file_to_data 
++
++g_list_alloc
++g_list_append
++g_list_concat
++g_list_copy
++g_list_delete_link
++g_list_find
++g_list_find_custom
++g_list_first
++g_list_foreach
++g_list_free
++g_list_free_1
++g_list_index
++g_list_insert
++g_list_insert_before
++g_list_insert_sorted
++g_list_insert_sorted_with_data
++g_list_last
++g_list_length
++g_list_nth
++g_list_nth_data
++g_list_nth_prev
++
++g_list_pop_allocator
++
++g_list_position
++g_list_prepend
++
++g_list_push_allocator
++
++g_list_remove
++g_list_remove_all
++g_list_remove_link
++g_list_reverse
++g_list_sort
++g_list_sort_with_data
++
++g_child_watch_add
++g_child_watch_add_full
++g_child_watch_source_new
++g_get_current_time
++g_main_context_acquire
++g_main_context_add_poll
++g_main_context_check
++g_main_context_default
++g_main_context_dispatch
++g_main_context_find_source_by_funcs_user_data
++g_main_context_find_source_by_id
++g_main_context_find_source_by_user_data
++g_main_context_get_poll_func
++g_main_context_is_owner
++g_main_context_iteration
++g_main_context_new
++g_main_context_pending
++g_main_context_prepare
++g_main_context_query
++g_main_context_ref
++g_main_context_release
++g_main_context_remove_poll
++g_main_context_set_poll_func
++g_main_context_unref
++g_main_context_wait
++g_main_context_wakeup
++g_main_depth
++g_main_current_source
++g_main_loop_get_context
++g_main_loop_is_running
++g_main_loop_new
++g_main_loop_quit
++g_main_loop_ref
++g_main_loop_run
++g_main_loop_unref
++g_source_add_poll
++g_source_attach
++g_source_destroy
++g_source_get_can_recurse
++g_source_get_context
++g_source_get_current_time
++g_source_get_id
++g_source_get_priority
++g_source_new
++g_source_ref
++g_source_remove
++g_source_remove_by_funcs_user_data
++g_source_remove_by_user_data
++g_source_remove_poll
++g_source_set_callback
++g_source_set_callback_indirect
++g_source_set_can_recurse
++g_source_set_funcs
++g_source_is_destroyed
++g_source_set_priority
++g_source_unref
++g_idle_add
++g_idle_add_full
++g_idle_remove_by_data
++g_idle_source_new
++g_timeout_add
++g_timeout_add_seconds
++g_timeout_add_full
++g_timeout_add_seconds_full
++g_timeout_source_new
++g_timeout_source_new_seconds
++
++g_mapped_file_new 
++g_mapped_file_get_length
++g_mapped_file_get_contents
++g_mapped_file_free
++
++g_markup_error_quark
++g_markup_escape_text
++g_markup_parse_context_end_parse
++g_markup_parse_context_free
++g_markup_parse_context_get_element
++g_markup_parse_context_get_element_stack
++g_markup_parse_context_get_position
++g_markup_parse_context_new
++g_markup_parse_context_parse
++g_markup_printf_escaped ;G_GNUC_PRINTF(1,2)
++g_markup_vprintf_escaped
++g_markup_collect_attributes
++
++g_free
++g_malloc 
++g_malloc0 
++g_mem_is_system_malloc
++g_mem_profile
++g_mem_set_vtable
++g_realloc
++g_try_malloc 
++g_try_malloc0 
++g_try_realloc
++
++g_allocator_free
++g_allocator_new
++g_mem_chunk_alloc
++g_mem_chunk_alloc0
++g_mem_chunk_clean
++g_mem_chunk_destroy
++g_mem_chunk_free
++g_mem_chunk_info
++g_mem_chunk_new
++g_mem_chunk_print
++g_mem_chunk_reset
++g_blow_chunks
++
++g_slice_alloc 
++g_slice_alloc0 
++g_slice_copy 
++g_slice_free1
++g_slice_free_chain_with_offset
++g_slice_set_config
++g_slice_get_config
++g_slice_get_config_state
++
++g_printf_string_upper_bound
++g_log ;G_GNUC_PRINTF(3,4)
++g_log_default_handler
++g_log_remove_handler
++g_log_set_always_fatal
++g_log_set_default_handler
++g_log_set_fatal_mask
++g_log_set_handler
++g_logv
++g_return_if_fail_warning
++g_warn_message
++
++g_assert_warning 
++
++g_print ;G_GNUC_PRINTF(1,2)
++g_printerr ;G_GNUC_PRINTF(1,2)
++g_set_printerr_handler
++g_set_print_handler
++
++g_node_child_index
++g_node_child_position
++g_node_children_foreach
++g_node_copy
++g_node_copy_deep
++g_node_depth
++g_node_destroy
++g_node_find
++g_node_find_child
++g_node_first_sibling
++g_node_get_root
++g_node_insert
++g_node_insert_after
++g_node_insert_before
++g_node_is_ancestor
++g_node_last_child
++g_node_last_sibling
++g_node_max_height
++g_node_n_children
++g_node_new
++g_node_n_nodes
++g_node_nth_child
++
++g_node_pop_allocator
++
++g_node_prepend
++
++g_node_push_allocator
++
++g_node_reverse_children
++g_node_traverse
++g_node_unlink
++
++g_option_context_add_group
++g_option_context_add_main_entries
++g_option_error_quark
++g_option_context_free
++g_option_context_get_description
++g_option_context_get_help_enabled
++g_option_context_get_ignore_unknown_options
++g_option_context_get_main_group
++g_option_context_get_summary
++g_option_context_new
++g_option_context_parse
++g_option_context_set_description
++g_option_context_set_help_enabled
++g_option_context_set_ignore_unknown_options
++g_option_context_set_main_group
++g_option_context_set_summary
++g_option_context_set_translate_func
++g_option_context_set_translation_domain
++g_option_context_get_help
++g_option_group_add_entries
++g_option_group_free
++g_option_group_new
++g_option_group_set_error_hook
++g_option_group_set_parse_hooks
++g_option_group_set_translate_func
++g_option_group_set_translation_domain
++
++g_pattern_match
++g_pattern_match_simple
++g_pattern_match_string
++g_pattern_spec_equal
++g_pattern_spec_free
++g_pattern_spec_new
++
++g_spaced_primes_closest 
++
++g_fprintf ;G_GNUC_PRINTF(2,3)
++g_printf ;G_GNUC_PRINTF(1,2)
++g_sprintf ;G_GNUC_PRINTF(2,3)
++g_vasprintf
++g_vfprintf
++g_vprintf
++g_vsprintf
++
++g_snprintf ;G_GNUC_PRINTF(3,4)
++g_vsnprintf
++
++g_qsort_with_data
++
++g_queue_clear
++g_queue_copy
++g_queue_delete_link
++g_queue_find
++g_queue_find_custom
++g_queue_foreach
++g_queue_free
++g_queue_get_length
++g_queue_index
++g_queue_init
++g_queue_insert_after
++g_queue_insert_before
++g_queue_insert_sorted
++g_queue_is_empty
++g_queue_link_index
++g_queue_new
++g_queue_peek_head
++g_queue_peek_head_link
++g_queue_peek_nth
++g_queue_peek_nth_link
++g_queue_peek_tail
++g_queue_peek_tail_link
++g_queue_pop_head
++g_queue_pop_head_link
++g_queue_pop_nth
++g_queue_pop_nth_link
++g_queue_pop_tail
++g_queue_pop_tail_link
++g_queue_push_head
++g_queue_push_head_link
++g_queue_push_nth
++g_queue_push_nth_link
++g_queue_push_tail
++g_queue_push_tail_link
++g_queue_remove
++g_queue_remove_all
++g_queue_reverse
++g_queue_sort
++g_queue_unlink
++
++g_rand_copy
++g_rand_double
++g_rand_double_range
++g_rand_free
++g_rand_int
++g_rand_int_range
++g_rand_new
++g_rand_new_with_seed
++g_rand_new_with_seed_array
++g_random_double
++g_random_double_range
++g_random_int
++g_random_int_range
++g_random_set_seed
++g_rand_set_seed
++g_rand_set_seed_array
++
++g_relation_count
++g_relation_delete
++g_relation_destroy
++g_relation_exists
++g_relation_index
++g_relation_insert
++g_relation_new
++g_relation_print
++g_relation_select
++g_tuples_destroy
++g_tuples_index
++
++g_scanner_cur_line
++g_scanner_cur_position
++g_scanner_cur_token
++g_scanner_cur_value
++g_scanner_destroy
++g_scanner_eof
++g_scanner_error ;G_GNUC_PRINTF(2,3)
++g_scanner_get_next_token
++g_scanner_input_file
++g_scanner_input_text
++g_scanner_lookup_symbol
++g_scanner_new
++g_scanner_peek_next_token
++g_scanner_scope_add_symbol
++g_scanner_scope_foreach_symbol
++g_scanner_scope_lookup_symbol
++g_scanner_scope_remove_symbol
++g_scanner_set_scope
++g_scanner_sync_file_offset
++g_scanner_unexp_token
++g_scanner_warn ;G_GNUC_PRINTF(2,3)
++
++g_sequence_new
++g_sequence_free
++g_sequence_get_length
++g_sequence_foreach
++g_sequence_foreach_range
++g_sequence_sort
++g_sequence_sort_iter
++g_sequence_get_begin_iter
++g_sequence_get_end_iter
++g_sequence_get_iter_at_pos
++g_sequence_append
++g_sequence_prepend
++g_sequence_insert_before
++g_sequence_move
++g_sequence_swap
++g_sequence_insert_sorted
++g_sequence_insert_sorted_iter
++g_sequence_sort_changed
++g_sequence_sort_changed_iter
++g_sequence_remove
++g_sequence_remove_range
++g_sequence_move_range
++g_sequence_search
++g_sequence_search_iter
++g_sequence_get
++g_sequence_set
++g_sequence_iter_is_begin
++g_sequence_iter_is_end
++g_sequence_iter_next
++g_sequence_iter_prev
++g_sequence_iter_get_position
++g_sequence_iter_move
++g_sequence_iter_get_sequence
++g_sequence_iter_compare
++g_sequence_range_get_midpoint
++
++g_shell_error_quark
++g_shell_parse_argv
++g_shell_quote
++g_shell_unquote
++
++g_slist_alloc
++g_slist_append
++g_slist_concat
++g_slist_copy
++g_slist_delete_link
++g_slist_find
++g_slist_find_custom
++g_slist_foreach
++g_slist_free
++g_slist_free_1
++g_slist_index
++g_slist_insert
++g_slist_insert_before
++g_slist_insert_sorted
++g_slist_insert_sorted_with_data
++g_slist_last
++g_slist_length
++g_slist_nth
++g_slist_nth_data
++
++g_slist_pop_allocator
++
++g_slist_position
++g_slist_prepend
++
++g_slist_push_allocator
++
++g_slist_remove
++g_slist_remove_all
++g_slist_remove_link
++g_slist_reverse
++g_slist_sort
++g_slist_sort_with_data
++
++g_spawn_async PRIVATE
++g_spawn_async_with_pipes PRIVATE
++g_spawn_close_pid
++g_spawn_command_line_async PRIVATE
++g_spawn_command_line_sync PRIVATE
++g_spawn_error_quark
++g_spawn_sync PRIVATE
++
++g_spawn_async_utf8
++g_spawn_async_with_pipes_utf8
++g_spawn_command_line_async_utf8
++g_spawn_command_line_sync_utf8
++g_spawn_sync_utf8
++
++g_chmod
++g_open
++g_creat
++g_rename
++g_mkdir
++g_stat
++g_lstat
++g_remove
++g_fopen
++g_freopen
++
++g_access
++g_chdir
++g_unlink
++g_rmdir
++
++g_ascii_digit_value 
++g_ascii_dtostr
++g_ascii_formatd
++g_ascii_strdown 
++g_ascii_strtod
++g_ascii_strtoull
++g_ascii_strtoll
++g_ascii_strup 
++g_ascii_tolower 
++g_ascii_toupper 
++g_ascii_xdigit_value 
++g_ascii_strcasecmp
++g_ascii_strncasecmp
++g_memdup 
++g_stpcpy
++g_strcanon
++g_strchomp
++g_strchug
++g_strcompress 
++g_strconcat  
++g_strdelimit
++g_strdup 
++g_strdup_printf ;G_GNUC_PRINTF(1,2) 
++g_strdupv 
++g_strdup_vprintf 
++g_strerror 
++g_strescape 
++g_strfreev
++g_str_has_prefix
++g_str_has_suffix
++g_strjoin  
++g_strjoinv 
++g_strlcat
++g_strlcpy
++g_strndup 
++g_strnfill 
++g_strreverse
++g_strrstr
++g_strrstr_len
++g_strsignal 
++g_strsplit 
++g_strsplit_set 
++g_strstr_len
++g_strtod
++
++g_strcasecmp
++g_strncasecmp
++g_strup
++g_strdown
++
++g_strv_length
++g_strip_context
++g_dpgettext
++
++g_uri_unescape_string 
++g_uri_unescape_segment 
++g_uri_parse_scheme 
++g_uri_escape_string 
++
++g_string_append
++g_string_append_len
++g_string_append_printf ;G_GNUC_PRINTF(2,3)
++g_string_append_unichar
++g_string_append_vprintf
++g_string_ascii_down
++g_string_ascii_up
++g_string_assign
++g_string_chunk_free
++g_string_chunk_clear
++g_string_chunk_insert
++g_string_chunk_insert_const
++g_string_chunk_insert_len
++g_string_chunk_new
++g_string_equal
++g_string_erase
++g_string_free
++g_string_hash
++g_string_insert
++g_string_insert_c
++g_string_insert_len
++g_string_insert_unichar
++g_string_new
++g_string_new_len
++g_string_overwrite
++g_string_overwrite_len
++g_string_prepend
++g_string_prepend_c
++g_string_prepend_len
++g_string_prepend_unichar
++g_string_printf ;G_GNUC_PRINTF(2,3)
++g_string_set_size
++g_string_sized_new
++g_string_truncate
++g_string_append_uri_escaped
++
++g_string_down
++g_string_up
++
++g_string_vprintf
++
++ 
++g_string_append_c
++
++g_str_equal
++g_str_hash
++
++g_once_impl
++g_once_init_enter_impl
++g_once_init_leave
++
++g_thread_init_glib
++g_once_init_enter
++
++g_thread_functions_for_glib_use
++g_threads_got_initialized
++g_thread_use_default_impl
++g_thread_gettime
++
++g_thread_create_full
++g_thread_error_quark
++g_thread_exit
++g_thread_join
++g_thread_self
++g_thread_set_priority
++g_static_mutex_free
++g_static_mutex_get_mutex_impl
++g_static_mutex_init
++g_static_private_free
++g_static_private_get
++g_static_private_init
++g_static_private_set
++g_static_rec_mutex_free
++g_static_rec_mutex_init
++g_static_rec_mutex_lock
++g_static_rec_mutex_lock_full
++g_static_rec_mutex_trylock
++g_static_rec_mutex_unlock
++g_static_rec_mutex_unlock_full
++g_static_rw_lock_free
++g_static_rw_lock_init
++g_static_rw_lock_reader_lock
++g_static_rw_lock_reader_trylock
++g_static_rw_lock_reader_unlock
++g_static_rw_lock_writer_lock
++g_static_rw_lock_writer_trylock
++g_static_rw_lock_writer_unlock
++g_thread_foreach
++
++g_thread_pool_free
++g_thread_pool_get_max_threads
++g_thread_pool_get_max_unused_threads
++g_thread_pool_get_max_idle_time
++g_thread_pool_get_num_threads
++g_thread_pool_get_num_unused_threads
++g_thread_pool_new
++g_thread_pool_push
++g_thread_pool_set_max_threads
++g_thread_pool_set_max_unused_threads
++g_thread_pool_set_max_idle_time
++g_thread_pool_stop_unused_threads
++g_thread_pool_unprocessed
++g_thread_pool_set_sort_function
++
++g_assertion_message 
++g_assertion_message_cmpnum 
++g_assertion_message_cmpstr 
++g_assertion_message_expr 
++g_strcmp0
++g_test_add_data_func
++g_test_add_func
++g_test_add_vtable
++g_test_bug
++g_test_bug_base
++g_test_config_vars
++g_test_create_case
++g_test_create_suite
++g_test_get_root
++g_test_init
++g_test_log_buffer_free
++g_test_log_buffer_new
++g_test_log_buffer_pop
++g_test_log_buffer_push
++g_test_log_msg_free
++g_test_log_type_name
++g_test_maximized_result
++g_test_message
++g_test_minimized_result
++g_test_queue_destroy
++g_test_queue_free
++g_test_rand_double
++g_test_rand_double_range
++g_test_rand_int
++g_test_rand_int_range
++g_test_run
++g_test_run_suite
++g_test_suite_add
++g_test_suite_add_suite
++g_test_timer_elapsed
++g_test_timer_last
++g_test_timer_start
++g_test_trap_assertions
++g_test_trap_fork
++g_test_trap_has_passed
++g_test_trap_reached_timeout
++
++g_timer_continue
++g_timer_destroy
++g_timer_elapsed
++g_timer_new
++g_timer_reset
++g_timer_start
++g_timer_stop
++g_time_val_add
++g_time_val_from_iso8601
++g_time_val_to_iso8601 
++g_usleep
++
++g_tree_destroy
++g_tree_foreach
++g_tree_height
++g_tree_insert
++g_tree_lookup
++g_tree_lookup_extended
++g_tree_new
++g_tree_new_full
++g_tree_new_with_data
++g_tree_nnodes
++g_tree_remove
++g_tree_replace
++g_tree_search
++g_tree_steal
++
++g_tree_traverse
++
++g_unichar_break_type 
++
++g_utf8_collate
++g_utf8_collate_key 
++g_utf8_collate_key_for_filename 
++
++g_unicode_canonical_decomposition 
++g_unicode_canonical_ordering
++g_unichar_combining_class 
++g_utf8_normalize
++
++g_unichar_isalnum 
++g_unichar_isalpha 
++g_unichar_iscntrl 
++g_unichar_isdefined 
++g_unichar_isdigit 
++g_unichar_isgraph 
++g_unichar_islower 
++g_unichar_isprint 
++g_unichar_ispunct 
++g_unichar_isspace 
++g_unichar_istitle 
++g_unichar_isupper 
++g_unichar_iswide 
++g_unichar_iswide_cjk 
++g_unichar_isxdigit 
++g_unichar_iszerowidth 
++g_unichar_tolower 
++g_unichar_totitle 
++g_unichar_toupper 
++g_unichar_ismark 
++g_unichar_get_mirror_char
++g_unichar_get_script
++g_unichar_digit_value 
++g_unichar_xdigit_value 
++g_unichar_type 
++g_utf8_casefold 
++g_utf8_strup 
++g_utf8_strdown 
++
++g_get_charset
++g_ucs4_to_utf16 
++g_ucs4_to_utf8 
++g_utf16_to_ucs4 
++g_utf16_to_utf8 
++g_utf8_find_next_char
++g_utf8_find_prev_char
++g_utf8_get_char
++g_utf8_get_char_validated
++g_utf8_offset_to_pointer
++g_utf8_pointer_to_offset
++g_utf8_prev_char
++g_utf8_strchr
++g_utf8_strlen
++g_utf8_strncpy
++g_utf8_strrchr
++g_utf8_strreverse
++g_utf8_to_ucs4 
++g_utf8_to_ucs4_fast 
++g_utf8_to_utf16 
++g_utf8_validate
++g_unichar_to_utf8
++g_unichar_validate
++
++glib_gettext
++
++g_int_equal
++g_int_hash
++g_direct_equal 
++g_direct_hash 
++
++g_atexit
++
++g_basename
++
++g_get_application_name
++g_find_program_in_path PRIVATE
++g_get_current_dir PRIVATE
++g_getenv PRIVATE
++g_unsetenv PRIVATE
++g_get_home_dir PRIVATE
++g_get_host_name
++g_setenv PRIVATE
++g_listenv
++
++g_find_program_in_path_utf8
++g_get_current_dir_utf8
++g_getenv_utf8
++g_unsetenv_utf8
++g_setenv_utf8
++g_get_home_dir_utf8
++
++g_get_language_names
++g_get_prgname
++g_get_real_name PRIVATE
++
++g_get_real_name_utf8
++
++g_get_system_config_dirs
++g_get_system_data_dirs
++
++g_win32_get_system_data_dirs_for_module
++
++g_get_tmp_dir PRIVATE
++
++g_get_tmp_dir_utf8
++
++g_get_user_cache_dir
++g_get_user_config_dir
++g_get_user_data_dir
++g_get_user_special_dir
++g_get_user_name PRIVATE
++
++g_get_user_name_utf8
++
++glib_check_version
++g_nullify_pointer
++g_parse_debug_string
++g_path_get_basename 
++g_path_get_dirname 
++g_path_is_absolute
++g_path_skip_root
++g_set_application_name
++g_set_prgname
++
++g_bit_nth_lsf
++g_bit_nth_msf
++g_bit_storage
++g_trash_stack_height
++g_trash_stack_peek
++g_trash_stack_pop
++g_trash_stack_push
++g_get_codeset
++
++g_regex_error_quark
++g_regex_new
++g_regex_ref
++g_regex_unref
++g_regex_get_pattern
++g_regex_get_max_backref
++g_regex_get_capture_count
++g_regex_get_string_number
++g_regex_escape_string
++g_regex_match_simple
++g_regex_match
++g_regex_match_full
++g_regex_match_all
++g_regex_match_all_full
++g_regex_split_simple
++g_regex_split
++g_regex_split_full
++g_regex_replace
++g_regex_replace_literal
++g_regex_replace_eval
++g_regex_check_replacement
++g_match_info_get_regex
++g_match_info_get_string
++g_match_info_free
++g_match_info_next
++g_match_info_matches
++g_match_info_get_match_count
++g_match_info_is_partial_match
++g_match_info_expand_references
++g_match_info_fetch
++g_match_info_fetch_pos
++g_match_info_fetch_named
++g_match_info_fetch_named_pos
++g_match_info_fetch_all
++
++g_win32_error_message
++g_win32_ftruncate
++g_win32_get_package_installation_directory_of_module
++g_win32_get_package_installation_directory PRIVATE
++g_win32_get_package_installation_directory_utf8
++g_win32_get_package_installation_subdirectory PRIVATE
++g_win32_get_package_installation_subdirectory_utf8
++g_win32_get_windows_version
++g_win32_getlocale
++g_win32_locale_filename_from_utf8
++
++g_ascii_table
++g_utf8_skip
++g_idle_funcs
++g_timeout_funcs
++g_io_watch_funcs
++g_child_watch_funcs
++glib_binary_age
++glib_interface_age
++glib_major_version
++glib_mem_profiler_table
++glib_micro_version
++glib_minor_version
++glib_on_error_halt
++g_mem_gc_friendly
++
+
+--- glib/gprintf.c	2008-09-12 19:55:51.000000000 +0200
++++ glib/gprintf.c	2012-10-24 15:35:03.398878800 +0200
+@@ -31,6 +31,22 @@
+ 
+ #include "galias.h"
+ 
++#if defined(WIN32) || defined(WIN64)
++
++#ifndef HAVE_VASPRINTF
++#define HAVE_VASPRINTF 1
++#endif
++
++int vasprintf(char **s, const char *format, va_list args) {
++  int len= vsnprintf(0, 0, format, args);
++  if (s != 0 && len > 0) {
++    *s= malloc(len+1); /* Length + zero term */
++    return vsnprintf(*s, len+1, format, args);
++  }
++  return len;
++}
++#endif
++
+ /**
+  * g_printf:
+  * @format: a standard printf() format string, but notice 
+
+--- glib/gprintfint.h	2008-09-12 19:55:51.000000000 +0200
++++ glib/gprintfint.h	2012-10-24 15:35:01.551187800 +0200
+@@ -32,7 +32,11 @@
+ #define _g_printf    printf
+ #define _g_fprintf   fprintf
+ #define _g_sprintf   sprintf
++#ifdef _MSC_VER
++#define _g_snprintf  _snprintf
++#else
+ #define _g_snprintf  snprintf
++#endif
+ 
+ #define _g_vprintf   vprintf
+ #define _g_vfprintf  vfprintf

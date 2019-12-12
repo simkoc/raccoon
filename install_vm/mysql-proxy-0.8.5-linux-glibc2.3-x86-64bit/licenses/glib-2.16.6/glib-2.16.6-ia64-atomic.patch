@@ -1,0 +1,21 @@
+Compile problem on IA64, worked around by disabling special IA64 code
+
+gcc -g -O2 -Wall -o .libs/gtester gtester.o ./.libs/libglib-2.0.so \
+-L$WORKDIR/pcre-7.4-rhel4-ia64-64bit/lib \
+$WORKDIR/pcre-7.4-rhel4-ia64-64bit/lib/libpcre.so \
+-Wl,--rpath -Wl,$WORKDIR/glib-2.16.6-linux2.6-ia64-64bit/lib \
+-Wl,--rpath -Wl,$WORKDIR/pcre-7.4-rhel4-ia64-64bit/lib
+./.libs/libglib-2.0.so: undefined reference to `__sync_fetch_and_add'
+./.libs/libglib-2.0.so: undefined reference to `__sync_bool_compare_and_swap'
+
+--- glib/gatomic.c.ORIG	2012-09-26 01:28:37.000000000 +0200
++++ glib/gatomic.c	2012-09-26 01:28:41.000000000 +0200
+@@ -485,7 +485,7 @@
+ 
+ #  define G_ATOMIC_MEMORY_BARRIER __asm__ ("sync" : : : "memory")
+ 
+-# elif defined (G_ATOMIC_IA64)
++# elif defined (G_ATOMIC_IA64X)
+ /* Adapted from CVS version 1.8 of glibc's sysdeps/ia64/bits/atomic.h
+  */
+ gint

@@ -1,0 +1,20 @@
+[Basis]
+# choose one of the following actions: data_gathering, interleaving, full, single, reeval, results, raw_queries, analysis 
+action = interleaving
+
+[Parameters]
+# postgres host
+host = localhost
+# postgres user
+user = trueschottsman
+# postgres user password
+pwd = woulddothat
+# postgres database
+database = secsac
+# the maximum amount the same hit may appear before it is considered irrelevant (-1 for infinit) 
+threshold = 3
+# the id of the trace to be analyzed
+expid = 1
+
+# do not store results in database
+simulate = false

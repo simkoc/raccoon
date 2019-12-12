@@ -1,0 +1,39 @@
+[Basis]
+# choose one of the following actions: data_gathering, interleaving, full, single, reeval, results, raw_queries, analysis 
+action = data_gathering
+
+[Parameters]
+# postgres host
+host = localhost
+# postgres user
+user = trueschottsman
+# postgres user password
+pwd = woulddothat
+# postgres database
+database = secsac
+# vm root user
+root_user = bitnami
+# vm root password
+root_pwd = bitnami
+# vm ip
+vm_ip = 192.168.56.102
+# vm name
+vm_name = racoon_opencart
+# vm state
+vm_state = virgin-state-racoon-ready
+# proj name (stored in database)
+proj_name = racoon-opencart
+# operation of the selenese script
+operation = login-fail
+# user given in selenese script
+web_user = null
+# full path to selense.jar
+sel_runner = /home/tim/firebases/selenese.jar
+# timeout for entire run of selenese script
+sel_timeout = 1200000
+# time between two selenese-commands
+sel_speed = 30000
+# full path of firefox binary
+firefox = /usr/bin/firefox
+# full path of selenese script
+sel_receipe = /home/tim/git/hiwi/racoon/selenese/opencart/login-fail-user/merged_TS_login-fail_user.html

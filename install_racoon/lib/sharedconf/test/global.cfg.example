@@ -1,0 +1,29 @@
+[postgresql]
+host=127.0.0.1
+port=5432
+username=dbuser
+password=dbpassword
+database=deepmodel
+
+
+[neo4j]
+# put server location here
+host=localhost
+
+# put username here
+username=neo4j
+
+# put password here
+database=password
+
+
+[php]
+session_save_path=/opt/something
+xdebug_save_path=/tmp/
+
+[virtualbox]
+ip=192.168.56.101
+
+[bitnami]
+root=bitnami
+password=bitnami

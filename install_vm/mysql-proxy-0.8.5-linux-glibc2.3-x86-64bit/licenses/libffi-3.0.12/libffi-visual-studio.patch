@@ -1,0 +1,570 @@
+Enable Visual Studio build on Windows
+
+--- CMakeLists.txt	1970-01-01 01:00:00.000000000 +0100
++++ CMakeLists.txt	2013-05-20 04:53:42.782077200 +0200
+@@ -0,0 +1,409 @@
++# Copyright (c) 2013, Oracle and/or its affiliates. All rights reserved.
++#
++# This file is in the public domain
++
++cmake_minimum_required(VERSION 2.8)
++
++project(libffi)
++
++##############################################################################
++# 
++# This is a minimal CMakeLists.txt, it will not detect platform etc.
++# Instead you specify
++#
++#   LIBFFI_PLATFORM    One of the platform names below
++#
++##############################################################################
++
++set(LIBFFI_MAJOR 3)
++set(LIBFFI_MINOR 0)
++set(LIBFFI_PATCH 12)
++
++set(LIBFFI_VERSION_STRING "${LIBFFI_MAJOR}.${LIBFFI_MINOR}.${LIBFFI_PATCH}")
++set(LIBFFI_SOVERSION_MAJOR 6)
++set(LIBFFI_SOVERSION       6.0.1)
++
++##############################################################################
++#  Configure
++##############################################################################
++
++if(NOT DEFINED LIBFFI_PLATFORM)
++  message(FATAL_ERROR "You need to set -DLIBFFI_PLATFORM=... from the command line")
++endif()
++
++if(FFI_EXEC_TRAMPOLINE_TABLE)
++  set(FFI_EXEC_TRAMPOLINE_TABLE 1)
++else()
++  set(FFI_EXEC_TRAMPOLINE_TABLE 0)
++endif()
++
++set(TARGET ${LIBFFI_PLATFORM})
++
++if(FFI_DEBUG)
++  set(FFI_DEBUG 1)
++endif()
++
++include(CheckTypeSize)
++check_type_size("long double" LONG_DOUBLE) # Set HAVE_LONG_DOUBLE if exists
++if(HAVE_LONG_DOUBLE)
++  set(HAVE_LONG_DOUBLE 1)
++else()
++  set(HAVE_LONG_DOUBLE 0)
++endif()
++
++if(CMAKE_COMPILER_IS_GNUCC)
++# Broken in some CMake versions, fixed in 2.8.6
++# http://public.kitware.com/Bug/view.php?id=12342
++# set_property(GLOBAL APPEND PROPERTY COMPILE_FLAGS "-fexceptions")
++  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fexceptions")
++endif()
++
++include(CheckIncludeFiles)
++#check_include_files(sys/mman.h            HAVE_SYS_MMAN_H) # Never used
++check_include_files(alloca.h              HAVE_ALLOCA_H)
++check_include_files(dlfcn.h               HAVE_DLFCN_H)
++check_include_files(inttypes.h            HAVE_INTTYPES_H)
++check_include_files(machine/asm.h         HAVE_MACHINE_ASM_H)
++check_include_files(stdint.h              HAVE_STDINT_H)
++check_include_files(/usr/include/malloc.h HAVE_USR_INCLUDE_MALLOC_H)
++
++# STACK_DIRECTION needs handling
++# SYMBOL_UNDERSCORE
++
++include(CheckFunctionExists)
++check_function_exists(mmap   HAVE_MMAP)
++check_function_exists(memcpy HAVE_MEMCPY)
++check_function_exists(alloca HAVE_ALLOCA)
++
++include(TestBigEndian)
++test_big_endian(WORDS_BIGENDIAN)
++
++# Settings for "libffi.pc"
++set(prefix          "${CMAKE_INSTALL_PREFIX}")
++set(exec_prefix     "\${prefix}")
++set(libdir          "\${exec_prefix}/lib")
++set(PACKAGE_NAME    "${PROJECT_NAME}")
++set(PACKAGE_VERSION "${LIBFFI_VERSION_STRING}")
++
++#prefix=/pb2/build/sb_0-12957140-1408437584.11/libffi-3.0.12-solaris10-x86-32bit
++#exec_prefix=${prefix}
++#libdir=${exec_prefix}/lib
++#includedir=${libdir}/libffi-3.0.12/include
++#
++#Name: libffi
++#Description: Library supporting Foreign Function Interfaces
++#Version: 3.0.12
++#Libs: -L${libdir} -lffi
++#Cflags: -I${includedir}
++
++configure_file(${CMAKE_SOURCE_DIR}/fficonfig.h.cmake
++               ${CMAKE_BINARY_DIR}/fficonfig.h)
++
++configure_file(${CMAKE_SOURCE_DIR}/include/ffi.h.in
++               ${CMAKE_BINARY_DIR}/include/ffi.h)
++
++configure_file(${CMAKE_SOURCE_DIR}/libffi.pc.in
++               ${CMAKE_BINARY_DIR}/libffi.pc)
++
++##############################################################################
++#  Find the source to use in the build
++##############################################################################
++
++set(libffi_c_SOURCES
++	ffi.def
++	src/prep_cif.c
++	src/types.c
++	src/raw_api.c
++	src/java_raw_api.c
++	src/closures.c
++)
++
++if(FFI_DEBUG)
++  list(APPEND libffi_c_SOURCES src/debug.c)
++endif()
++
++if(LIBFFI_PLATFORM STREQUAL "MIPS")
++  set(TARGETDIR "mips")
++  list(APPEND libffi_c_SOURCES src/mips/ffi.c)
++  list(APPEND libffi_asm_SOURCES src/mips/o32.S src/mips/n32.S)
++elseif(LIBFFI_PLATFORM STREQUAL "BFIN")
++  set(TARGETDIR "bfin")
++  list(APPEND libffi_c_SOURCES src/bfin/ffi.c)
++  list(APPEND libffi_asm_SOURCES src/bfin/sysv.S)
++elseif(LIBFFI_PLATFORM STREQUAL "X86")
++  set(TARGETDIR "x86")
++  list(APPEND libffi_c_SOURCES src/x86/ffi.c)
++  list(APPEND libffi_asm_SOURCES src/x86/sysv.S)
++elseif(LIBFFI_PLATFORM STREQUAL "X86_FREEBSD")
++  set(TARGETDIR "x86")
++  list(APPEND libffi_c_SOURCES src/x86/ffi.c)
++  list(APPEND libffi_asm_SOURCES src/x86/freebsd.S)
++elseif(LIBFFI_PLATFORM STREQUAL "X86_WIN32")
++  set(TARGETDIR "x86")
++  list(APPEND libffi_c_SOURCES src/x86/ffi.c)
++  list(APPEND libffi_asm_SOURCES src/x86/win32.S)
++elseif(LIBFFI_PLATFORM STREQUAL "X86_WIN64")
++  set(TARGETDIR "x86")
++  list(APPEND libffi_c_SOURCES src/x86/ffi.c)
++  list(APPEND libffi_asm_SOURCES src/x86/win64.S)
++elseif(LIBFFI_PLATFORM STREQUAL "X86_DARWIN")
++  set(TARGETDIR "x86")
++  list(APPEND libffi_c_SOURCES src/x86/ffi.c src/x86/ffi64.c)
++  list(APPEND libffi_asm_SOURCES src/x86/darwin.S src/x86/darwin64.S)
++elseif(LIBFFI_PLATFORM STREQUAL "SPARC")
++  set(TARGETDIR "sparc")
++  list(APPEND libffi_c_SOURCES src/sparc/ffi.c)
++  list(APPEND libffi_asm_SOURCES src/sparc/v8.S src/sparc/v9.S)
++elseif(LIBFFI_PLATFORM STREQUAL "ALPHA")
++  set(TARGETDIR "alpha")
++  list(APPEND libffi_c_SOURCES src/alpha/ffi.c)
++  list(APPEND libffi_asm_SOURCES src/alpha/osf.S)
++elseif(LIBFFI_PLATFORM STREQUAL "IA64")
++  set(TARGETDIR "ia64")
++  list(APPEND libffi_c_SOURCES src/ia64/ffi.c)
++  list(APPEND libffi_asm_SOURCES src/ia64/unix.S)
++elseif(LIBFFI_PLATFORM STREQUAL "M32R")
++  set(TARGETDIR "m32r")
++  list(APPEND libffi_c_SOURCES src/m32r/ffi.c)
++  list(APPEND libffi_asm_SOURCES src/m32r/sysv.S)
++elseif(LIBFFI_PLATFORM STREQUAL "M68K")
++  set(TARGETDIR "m68k")
++  list(APPEND libffi_c_SOURCES src/m68k/ffi.c)
++  list(APPEND libffi_asm_SOURCES src/m68k/sysv.S)
++elseif(LIBFFI_PLATFORM STREQUAL "MOXIE")
++  set(TARGETDIR "moxie")
++  list(APPEND libffi_c_SOURCES src/moxie/ffi.c)
++  list(APPEND libffi_asm_SOURCES src/moxie/eabi.S)
++elseif(LIBFFI_PLATFORM STREQUAL "MICROBLAZE")
++  set(TARGETDIR "microblaze")
++  list(APPEND libffi_c_SOURCES src/microblaze/ffi.c)
++  list(APPEND libffi_asm_SOURCES src/microblaze/sysv.S)
++elseif(LIBFFI_PLATFORM STREQUAL "POWERPC")
++  set(TARGETDIR "powerpc")
++  list(APPEND libffi_c_SOURCES src/powerpc/ffi.c)
++  list(APPEND libffi_asm_SOURCES src/powerpc/sysv.S src/powerpc/ppc_closure.S
++              src/powerpc/linux64.S src/powerpc/linux64_closure.S)
++elseif(LIBFFI_PLATFORM STREQUAL "POWERPC_AIX")
++  set(TARGETDIR "powerpc")
++  list(APPEND libffi_c_SOURCES src/powerpc/ffi_darwin.c)
++  list(APPEND libffi_asm_SOURCES src/powerpc/aix.S src/powerpc/aix_closure.S)
++elseif(LIBFFI_PLATFORM STREQUAL "POWERPC_DARWIN")
++  set(TARGETDIR "powerpc")
++  list(APPEND libffi_c_SOURCES src/powerpc/ffi_darwin.c)
++  list(APPEND libffi_asm_SOURCES src/powerpc/darwin.S src/powerpc/darwin_closure.S)
++elseif(LIBFFI_PLATFORM STREQUAL "POWERPC_FREEBSD")
++  set(TARGETDIR "powerpc")
++  list(APPEND libffi_c_SOURCES src/powerpc/ffi.c)
++  list(APPEND libffi_asm_SOURCES src/powerpc/sysv.S src/powerpc/ppc_closure.S)
++elseif(LIBFFI_PLATFORM STREQUAL "AARCH64")
++  set(TARGETDIR "aarch64")
++  list(APPEND libffi_c_SOURCES src/aarch64/ffi.c)
++  list(APPEND libffi_asm_SOURCES src/aarch64/sysv.S)
++elseif(LIBFFI_PLATFORM STREQUAL "ARM")
++  set(TARGETDIR "arm")
++  list(APPEND libffi_c_SOURCES src/arm/ffi.c)
++  list(APPEND libffi_asm_SOURCES src/arm/sysv.S)
++  if(FFI_EXEC_TRAMPOLINE_TABLE)
++    list(APPEND libffi_asm_SOURCES src/arm/trampoline.S)
++  endif()
++elseif(LIBFFI_PLATFORM STREQUAL "AVR32")
++  set(TARGETDIR "avr32")
++  list(APPEND libffi_c_SOURCES src/avr32/ffi.c)
++  list(APPEND libffi_asm_SOURCES src/avr32/sysv.S)
++elseif(LIBFFI_PLATFORM STREQUAL "LIBFFI_CRIS")
++  set(TARGETDIR "cris")
++  list(APPEND libffi_c_SOURCES src/cris/ffi.c)
++  list(APPEND libffi_asm_SOURCES src/cris/sysv.S)
++elseif(LIBFFI_PLATFORM STREQUAL "FRV")
++  set(TARGETDIR "frv")
++  list(APPEND libffi_c_SOURCES src/frv/ffi.c)
++  list(APPEND libffi_asm_SOURCES src/frv/eabi.S)
++elseif(LIBFFI_PLATFORM STREQUAL "S390")
++  set(TARGETDIR "s390")
++  list(APPEND libffi_c_SOURCES src/s390/ffi.c)
++  list(APPEND libffi_asm_SOURCES src/s390/sysv.S)
++elseif(LIBFFI_PLATFORM STREQUAL "X86_64")
++  set(TARGETDIR "x86")
++  list(APPEND libffi_c_SOURCES src/x86/ffi64.c src/x86/ffi.c)
++  list(APPEND libffi_asm_SOURCES src/x86/unix64.S src/x86/sysv.S)
++elseif(LIBFFI_PLATFORM STREQUAL "SH")
++  set(TARGETDIR "sh")
++  list(APPEND libffi_c_SOURCES src/sh/ffi.c)
++  list(APPEND libffi_asm_SOURCES src/sh/sysv.S)
++elseif(LIBFFI_PLATFORM STREQUAL "SH64")
++  set(TARGETDIR "sh64")
++  list(APPEND libffi_c_SOURCES src/sh64/ffi.c)
++  list(APPEND libffi_asm_SOURCES src/sh64/sysv.S)
++elseif(LIBFFI_PLATFORM STREQUAL "PA_LINUX")
++  set(TARGETDIR "pa")
++  list(APPEND libffi_c_SOURCES src/pa/ffi.c)
++  list(APPEND libffi_asm_SOURCES src/pa/linux.S)
++elseif(LIBFFI_PLATFORM STREQUAL "PA_HPUX")
++  set(TARGETDIR "pa")
++  list(APPEND libffi_c_SOURCES src/pa/ffi.c)
++  list(APPEND libffi_asm_SOURCES src/pa/hpux32.S)
++elseif(LIBFFI_PLATFORM STREQUAL "TILE")
++  set(TARGETDIR "tile")
++  list(APPEND libffi_c_SOURCES src/tile/ffi.c)
++  list(APPEND libffi_asm_SOURCES src/tile/tile.S)
++elseif(LIBFFI_PLATFORM STREQUAL "XTENSA")
++  set(TARGETDIR "xtensa")
++  list(APPEND libffi_c_SOURCES src/xtensa/ffi.c)
++  list(APPEND libffi_asm_SOURCES src/xtensa/sysv.S)
++else()
++  message(FATAL_ERROR "Unrecognized -DLIBFFI_PLATFORM=${LIBFFI_PLATFORM}")
++endif()
++
++##############################################################################
++#  Set the include flags/paths
++##############################################################################
++
++set(INC_FLAGS
++	-I${CMAKE_BINARY_DIR}
++	-I${CMAKE_BINARY_DIR}/include
++	-I${CMAKE_SOURCE_DIR}
++	-I${CMAKE_SOURCE_DIR}/include
++	-I${CMAKE_SOURCE_DIR}/src
++	-I${CMAKE_SOURCE_DIR}/src/${TARGETDIR}
++)
++
++include_directories(
++	${CMAKE_BINARY_DIR}
++	${CMAKE_BINARY_DIR}/include
++	${CMAKE_SOURCE_DIR}
++	${CMAKE_SOURCE_DIR}/include
++	${CMAKE_SOURCE_DIR}/src
++        ${CMAKE_SOURCE_DIR}/src/${TARGETDIR}
++)
++
++##############################################################################
++#  Assemble
++##############################################################################
++
++# The CMake assembler support is experimental still (2.8.x), so lets
++# assemble explicitly for now. Got great help from this post
++# http://www.cmake.org/pipermail/cmake/2008-November/025541.html
++
++if(WIN32)
++  set(CPP cl -nologo -EP)
++  if(CMAKE_SIZEOF_VOID_P MATCHES 8)
++    set(AS  ml64)
++  else()
++    set(AS  ml)
++  endif()
++  set(AS_FLAGS /c)
++  set(AS_OUTFLAG /Fo)
++else()
++  set(CPP ${CMAKE_C_COMPILER} -E)
++  set(AS  as)
++  set(AS_FLAGS)
++  set(AS_OUTFLAG -o)
++endif()
++
++set(libffi_OBJECTS)
++
++foreach(_asmfile ${libffi_asm_SOURCES})
++  message(STATUS "Creating custom command for assembling ${_asmfile}")
++  get_filename_component(BASE_NAME ${_asmfile} NAME_WE)
++  set(ASM_NAME "${BASE_NAME}.asm") # Name of preprocessed file, i.e. plain asm
++  set(OBJ_NAME "${BASE_NAME}${CMAKE_C_OUTPUT_EXTENSION}")
++  add_custom_command(
++	OUTPUT ${OBJ_NAME}
++	COMMAND ${CPP} ${INC_FLAGS} ${CMAKE_SOURCE_DIR}/${_asmfile} > ${ASM_NAME}
++	COMMAND ${AS} ${AS_FLAGS} ${AS_OUTFLAG} ${OBJ_NAME} ${ASM_NAME}
++	MAIN_DEPENDENCY ${CMAKE_SOURCE_DIR}/${_asmfile}
++	COMMENT "Preprocessing and assembling ${_asmfile}"
++  )
++  list(APPEND libffi_OBJECTS ${OBJ_NAME})
++endforeach()
++
++add_library(ffi_asm STATIC EXCLUDE_FROM_ALL ${libffi_OBJECTS})
++
++set_source_files_properties(
++	${libffi_OBJECTS}
++	PROPERTIES
++	EXTERNAL_OBJECT true
++	GENERATED true
++)
++
++set_target_properties(
++	ffi_asm
++	PROPERTIES
++	LINKER_LANGUAGE C
++)
++
++##############################################################################
++#  Build libffi
++##############################################################################
++
++# We want the resulting library to be "libffi.dll" on Windows,
++# as the Visual Studio GLIB build assumes it is named that way
++set(FFI_LIB_NAME "ffi")
++if(WIN32)
++  set(FFI_LIB_NAME "libffi")
++endif()
++
++add_library(${FFI_LIB_NAME} SHARED ${libffi_c_SOURCES})
++
++target_link_libraries(${FFI_LIB_NAME} ffi_asm)
++
++set_target_properties(
++	${FFI_LIB_NAME}
++	PROPERTIES
++	SOVERSION ${LIBFFI_SOVERSION_MAJOR}
++	VERSION   ${LIBFFI_SOVERSION}
++)
++
++##############################################################################
++#  Install
++##############################################################################
++
++install(TARGETS ${FFI_LIB_NAME}
++	RUNTIME DESTINATION bin
++	LIBRARY DESTINATION lib
++	ARCHIVE DESTINATION lib
++)
++
++install(FILES
++	${CMAKE_BINARY_DIR}/include/ffi.h
++	${CMAKE_SOURCE_DIR}/src/${TARGETDIR}/ffitarget.h
++	DESTINATION lib/libffi-${LIBFFI_VERSION_STRING}/include
++)
++
++# Some using libffi assumes headers are in "include", put copies there
++install(FILES
++	${CMAKE_BINARY_DIR}/include/ffi.h
++	${CMAKE_SOURCE_DIR}/src/${TARGETDIR}/ffitarget.h
++	DESTINATION include
++)
++
++install(FILES
++	${CMAKE_BINARY_DIR}/libffi.pc
++	DESTINATION lib/pkgconfig
++)
++
++install(FILES
++	${CMAKE_SOURCE_DIR}/LICENSE
++	${CMAKE_SOURCE_DIR}/README
++	DESTINATION .
++)
++
++##############################################################################
++#  Create the package
++##############################################################################
++
++set(CPACK_PACKAGE_VERSION_MAJOR       ${LIBFFI_MAJOR})
++set(CPACK_PACKAGE_VERSION_MINOR       ${LIBFFI_MINOR})
++set(CPACK_PACKAGE_VERSION_PATCH       ${LIBFFI_PATCH})
++set(CPACK_PACKAGE_VENDOR              "http://sourceware.org/libffi/")
++set(CPACK_PACKAGE_CONTACT             "libffi-discuss@sourceware.org")
++set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "A Portable Foreign Function Interface Library")
++set(CPACK_RESOURCE_FILE_LICENSE       "${CMAKE_SOURCE_DIR}/LICENSE")
++set(CPACK_RESOURCE_FILE_README        "${CMAKE_SOURCE_DIR}/README")
++if(WIN32)
++  set(CPACK_GENERATOR                 "ZIP")
++else()
++  set(CPACK_GENERATOR                 "TGZ")
++endif()
++
++include(CPack)
+
+--- ffi.def	1970-01-01 01:00:00.000000000 +0100
++++ ffi.def	2013-05-20 02:09:20.332172800 +0200
+@@ -0,0 +1,22 @@
++LIBRARY libffi
++EXPORTS
++ffi_call
++ffi_closure_alloc
++ffi_closure_free
++ffi_prep_args
++ffi_prep_cif
++ffi_prep_cif_var
++ffi_prep_closure_loc
++ffi_type_double
++ffi_type_float
++ffi_type_longdouble
++ffi_type_pointer
++ffi_type_sint16
++ffi_type_sint32
++ffi_type_sint64
++ffi_type_sint8
++ffi_type_uint16
++ffi_type_uint32
++ffi_type_uint64
++ffi_type_uint8
++ffi_type_void
+
+--- fficonfig.h.cmake	1970-01-01 01:00:00.000000000 +0100
++++ fficonfig.h.cmake	2013-05-20 02:59:44.902679300 +0200
+@@ -0,0 +1,126 @@
++/* Define to the flags needed for the .section .eh_frame directive. */
++#cmakedefine EH_FRAME_FLAGS 1
++
++/* Define this if you want extra debugging. */
++#cmakedefine FFI_DEBUG 1
++
++/* Cannot use PROT_EXEC on this target, so, we revert to alternative means */
++#cmakedefine FFI_EXEC_TRAMPOLINE_TABLE @FFI_EXEC_TRAMPOLINE_TABLE@
++
++/* Define this if you want to enable pax emulated trampolines */
++#cmakedefine FFI_MMAP_EXEC_EMUTRAMP_PAX 1
++
++/* Cannot use malloc on this target, so, we revert to alternative means */
++#cmakedefine FFI_MMAP_EXEC_WRIT 1
++
++/* Define this is you do not want support for the raw API. */
++#cmakedefine FFI_NO_RAW_API 1
++
++/* Define this is you do not want support for aggregate types. */
++#cmakedefine FFI_NO_STRUCTS 1
++
++/* Define to 1 if you have `alloca', as a function or macro. */
++#cmakedefine HAVE_ALLOCA 1
++
++/* Define to 1 if you have <alloca.h> and it should be used (not on Ultrix).
++   */
++#cmakedefine HAVE_ALLOCA_H 1
++
++/* Other include header checks found in the source */
++#cmakedefine HAVE_DLFCN_H 1
++#cmakedefine HAVE_INTTYPES_H 1
++#cmakedefine HAVE_MACHINE_ASM_H 1
++#cmakedefine HAVE_STDINT_H 1
++#cmakedefine HAVE_USR_INCLUDE_MALLOC_H 1
++
++/* Define if your assembler supports .ascii. */
++#cmakedefine HAVE_AS_ASCII_PSEUDO_OP 1
++
++/* Define if your assembler supports .cfi_* directives. */
++#cmakedefine HAVE_AS_CFI_PSEUDO_OP 1
++
++/* Define if your assembler supports .register. */
++#cmakedefine HAVE_AS_REGISTER_PSEUDO_OP 1
++
++/* Define if your assembler and linker support unaligned PC relative relocs.
++   */
++#cmakedefine HAVE_AS_SPARC_UA_PCREL 1
++
++/* Define if your assembler supports .string. */
++#cmakedefine HAVE_AS_STRING_PSEUDO_OP 1
++
++/* Define if your assembler supports unwind section type. */
++#cmakedefine HAVE_AS_X86_64_UNWIND_SECTION_TYPE 1
++
++/* Define if your assembler supports PC relative relocs. */
++#cmakedefine HAVE_AS_X86_PCREL 1
++
++/* Define if __attribute__((visibility("hidden"))) is supported. */
++#cmakedefine HAVE_HIDDEN_VISIBILITY_ATTRIBUTE 1
++
++/* Define if you have the long double type and it is bigger than a double */
++#cmakedefine HAVE_LONG_DOUBLE @HAVE_LONG_DOUBLE@
++
++/* Define to 1 if you have the `memcpy' function. */
++#cmakedefine HAVE_MEMCPY 1
++
++/* Define to 1 if you have the `mmap' function. */
++#cmakedefine HAVE_MMAP 1
++
++/* Define if mmap with MAP_ANON(YMOUS) works. */
++#cmakedefine HAVE_MMAP_ANON 1
++
++/* Define if mmap of /dev/zero works. */
++#cmakedefine HAVE_MMAP_DEV_ZERO 1
++
++/* Define if read-only mmap of a plain file works. */
++#cmakedefine HAVE_MMAP_FILE 1
++
++/* Define if .eh_frame sections should be read-only. */
++#cmakedefine HAVE_RO_EH_FRAME 1
++
++/* Name of package */
++#define PACKAGE "@PACKAGE@"
++
++/* If using the C implementation of alloca, define if you know the
++   direction of stack growth for your system; otherwise it will be
++   automatically deduced at runtime.
++	STACK_DIRECTION > 0 => grows toward higher addresses
++	STACK_DIRECTION < 0 => grows toward lower addresses
++	STACK_DIRECTION = 0 => direction of growth unknown */
++#cmakedefine STACK_DIRECTION 1
++
++/* Define to 1 if you have the ANSI C header files. */
++#define STDC_HEADERS 1
++
++/* Define if symbols are underscored. */
++#cmakedefine SYMBOL_UNDERSCORE 1
++
++/* Version number of package */
++#define VERSION "@LIBFFI_VERSION_STRING@"
++
++/* Define WORDS_BIGENDIAN to 1 if your processor stores words with the most
++   significant byte first (like Motorola and SPARC, unlike Intel). */
++#if defined AC_APPLE_UNIVERSAL_BUILD
++# if defined __BIG_ENDIAN__
++#  define WORDS_BIGENDIAN 1
++# endif
++#else
++# ifndef WORDS_BIGENDIAN
++#  undef WORDS_BIGENDIAN
++# endif
++#endif
++
++#ifdef HAVE_HIDDEN_VISIBILITY_ATTRIBUTE
++#ifdef LIBFFI_ASM
++#define FFI_HIDDEN(name) .hidden name
++#else
++#define FFI_HIDDEN __attribute__ ((visibility ("hidden")))
++#endif
++#else
++#ifdef LIBFFI_ASM
++#define FFI_HIDDEN(name)
++#else
++#define FFI_HIDDEN
++#endif
++#endif

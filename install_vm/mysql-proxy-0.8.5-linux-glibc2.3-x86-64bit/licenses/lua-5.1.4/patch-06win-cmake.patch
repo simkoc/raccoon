@@ -1,0 +1,108 @@
+--- /dev/null	2012-10-24 14:16:56.000000000 +0200
++++ CMakeLists.txt	2012-10-24 14:13:00.000000000 +0200
+@@ -0,0 +1,105 @@
++PROJECT(lua C)
++
++cmake_minimum_required(VERSION 2.6)
++
++##############################################################################
++#
++#  Build environment
++#
++##############################################################################
++
++INCLUDE_DIRECTORIES(${CMAKE_CURRENT_BINARY_DIR})
++INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR})
++INCLUDE_DIRECTORIES(src/)
++
++##############################################################################
++#
++#  Configure
++#
++##############################################################################
++
++SET(POSIX_DEFS            "#undef LUA_USE_POSIX")
++SET(LUA_DL_DEFS           "#undef LUA_USE_DLOPEN")
++SET(LUA_BUILD_AS_DLL_DEFS "#undef LUA_BUILD_AS_DLL")
++SET(READLINE_DEFS         "#undef LUA_USE_READLINE") # Never set, so disabled
++SET(LUA_LIBS)
++
++IF(WIN32)
++	# force the correct version for the redist manifest
++	ADD_DEFINITIONS(-D_BIND_TO_CURRENT_MFC_VERSION=1 -D_BIND_TO_CURRENT_CRT_VERSION=1)
++	ADD_DEFINITIONS(-D_CRT_SECURE_NO_WARNINGS -D_SCL_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE)
++	SET(LUA_BUILD_AS_DLL_DEFS "#define LUA_BUILD_AS_DLL")
++ELSEIF(APPLE)
++	SET(POSIX_DEFS "#define LUA_USE_POSIX")
++	SET(LUA_DL_DEFS "#define LUA_DL_DYLD")
++	SET(LUA_LIBS m)
++ELSE()
++	SET(POSIX_DEFS "#define LUA_USE_POSIX")
++	SET(LUA_DL_DEFS "#define LUA_DL_DLOPEN")
++	LIST(APPEND LUA_LIBS dl m)
++ENDIF()
++
++CONFIGURE_FILE(src/luaconf.h.template.in src/luaconf.h)
++CONFIGURE_FILE(config.h.in config.h) # Currently does nothing
++
++##############################################################################
++#
++#  Build
++#
++##############################################################################
++
++ADD_LIBRARY(lua51 SHARED
++	src/lapi.c
++	src/lcode.c
++	src/ldebug.c
++	src/ldo.c
++	src/ldump.c
++	src/lfunc.c
++	src/lgc.c
++	src/llex.c
++	src/lmem.c
++	src/lobject.c
++	src/lopcodes.c
++	src/lparser.c
++	src/lstate.c
++	src/lstring.c
++	src/ltable.c
++	src/ltm.c
++	src/lundump.c
++	src/lvm.c
++	src/lzio.c
++
++	src/lauxlib.c
++	src/lbaselib.c
++	src/ldblib.c
++	src/liolib.c
++	src/lmathlib.c
++	src/loslib.c
++	src/ltablib.c
++	src/lstrlib.c
++	src/loadlib.c
++	src/linit.c
++)
++
++TARGET_LINK_LIBRARIES(lua51 ${LUA_LIBS})
++
++##############################################################################
++#
++#  Install
++#
++##############################################################################
++
++INSTALL(TARGETS lua51
++	RUNTIME DESTINATION bin
++	ARCHIVE DESTINATION lib
++	LIBRARY DESTINATION lib
++)
++
++INSTALL(FILES
++	src/luaconf.h
++	src/lua.h
++	src/lualib.h
++	src/lauxlib.h
++	DESTINATION
++	include/
++	)

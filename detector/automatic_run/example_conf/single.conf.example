@@ -1,0 +1,41 @@
+[Basis]
+# choose one of the following actions: data_gathering, interleaving, full, single, reeval, results, raw_queries, analysis 
+action = data_gathering
+
+[Parameters]
+# postgres host
+host = localhost
+# postgres user
+user = trueschottsman
+# postgres user password
+pwd = woulddothat
+# postgres database
+database = secsac
+# vm root user
+root_user = bitnami
+# vm root password
+root_pwd = bitnami
+# vm ip
+vm_ip = 192.168.56.102
+# vm name
+vm_name = racoon_opencart
+# vm state
+vm_state = virgin-state-racoon-ready
+# timeout for entire selenese-receipe while runs towards firebases
+max_fuse_delay = 1200000
+# time between selenese-commands while runs towards firebases
+walzing_barrage_timer = 30000
+# the location of the xdebug files on the target machine
+xpath = /tmp/
+# full path to racoon repository
+racoon_path = /home/tim/git/hiwi/racoon
+# the selenese script to be tested
+selenese_script_folder = /home/tim/git/hiwi/racoon/selenese/opencart/login-fail-user
+# the min number of parallel successfull requests to be considered a hit
+hit_threshold = 3
+# the suspect id
+suspectid = 1
+# do not store results in database
+simulate = false
+# relax the match checking to simply only look for the query itself
+relaxed-check = false

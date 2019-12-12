@@ -1,0 +1,6 @@
+#!/bin/bash
+
+if [ `/sbin/ifconfig enp0s3 | grep inet | wc -l` != "2" ]
+then
+        sudo /etc/init.d/networking restart
+fi
