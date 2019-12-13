@@ -662,7 +662,10 @@ def get_testcase_scripts(folder):
 def get_next_expid(pargs, logger=None):
     with db_interface.get_connection(pargs.host, pargs.user,
                                      pargs.pwd, pargs.database) as db_con:
-        return db_interface.get_highest_experiment_id(db_con, logger)[0] + 1
+        expid = db_interface.get_highest_experiment_id(db_con, logger)[0]
+        if expid == None:
+            expid = 1
+        return expid
 
 def start_firebases(racoon_path, walzing_barrage_timer, max_fuse_delay, logger=None):
     stop_script = racoon_path + "/detector/testor/distributedSelenese/kill-tmux-firebases.sh"
