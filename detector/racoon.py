@@ -345,7 +345,7 @@ def extract_and_show_results(db_host, db_user, db_pwd, db_name, expid, logger,
                 logger.info(result)
                 counter += 1
 
-def ground_data_gathering(pargs, expid, logger=None):
+def ground_data_gathering(pargs, logger=None):
     success = subprocess.call(["../data_gathering/data_gathering.sh", pargs.host, pargs.user, pargs.pwd, pargs.database, pargs.proj_name, 
                     pargs.operation, pargs.web_user, pargs.vm_name, pargs.root_user, pargs.root_pwd, pargs.vm_state, pargs.vm_ip, 
                     pargs.sel_runner, pargs.sel_timeout, pargs.sel_speed, pargs.firefox, pargs.sel_receipe])
@@ -659,10 +659,10 @@ def get_testcase_scripts(folder):
     recipes = ["{}/{}".format(folder, item) for item in os.listdir(folder) if os.path.isfile(os.path.join(folder, item)) and item[-1] != "~"]
     return recipes
 
-def get_current_expid(pargs, logger=None):
+def get_next_expid(pargs, logger=None):
     with db_interface.get_connection(pargs.host, pargs.user,
                                      pargs.pwd, pargs.database) as db_con:
-        return db_interface.get_highest_experiment_id(db_con, logger)
+        return db_interface.get_highest_experiment_id(db_con, logger)[0] + 1
 
 def start_firebases(racoon_path, walzing_barrage_timer, max_fuse_delay, logger=None):
     stop_script = racoon_path + "/detector/testor/distributedSelenese/kill-tmux-firebases.sh"
@@ -695,8 +695,7 @@ def parse_conf(pargs, logger=None):
     parameters.__dict__ = dict(config.items("Parameters"))
 
     if config["Basis"]["action"] == "data_gathering":
-        expid = get_current_expid(parameters, logger=logger)
-        ground_data_gathering(parameters, expid, logger=logger)
+        ground_data_gathering(parameters, logger=logger)
     elif config["Basis"]["action"] == "interleaving":
         interleaving(parameters, logger=logger)
     elif config["Basis"]["action"] == "full":
@@ -714,9 +713,9 @@ def parse_conf(pargs, logger=None):
 
 def full(pargs, logger=None):
     firebases = start_firebases(pargs.racoon_path, pargs.walzing_barrage_timer, pargs.max_fuse_delay, logger=logger)
-    expid = get_current_expid(pargs, logger=logger)
+    expid = get_next_expid(pargs, logger=logger)
     already_done = Set()
-    ground_data_gathering(pargs, expid, logger=logger)
+    ground_data_gathering(pargs, logger=logger)
     ids = interleaving_single(expid, pargs.host, pargs.user,
                               pargs.pwd, pargs.database, logger=logger)
     testcase_scripts = get_testcase_scripts(pargs.selenese_script_folder)
